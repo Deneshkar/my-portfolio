@@ -26,10 +26,10 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-black text-[clamp(3rem,10vw,8rem)] leading-[0.88] text-cream mb-6"
+          className="font-display font-black text-[clamp(2.5rem,8vw,8rem)] leading-[0.88] text-cream mb-6 break-words"
         >
           LET'S<br />
-          <span className="text-gradient">COLLABORATE</span>
+          <span className="text-gradient block w-full overflow-hidden text-ellipsis px-2 sm:px-0">COLLABORATE</span>
         </Motion.h2>
 
         {/* Sub */}

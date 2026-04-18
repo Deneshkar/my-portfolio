@@ -110,16 +110,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="whitespace-nowrap inline-block"
+            className="inline-block"
           >
             <h1
-              className="glitch font-display font-black text-[clamp(2.5rem,8vw,6rem)] leading-[0.92] text-cream mb-2 w-fit pr-10 inline-block"
+              className="glitch font-display font-black text-[clamp(2rem,10vw,6rem)] leading-[0.92] text-cream mb-2 w-fit pr-2 md:pr-10 inline-block"
               data-text="Deneshkar"
             >
               Deneshkar
             </h1>
             <br />
-            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] leading-[0.92] text-gradient mb-8 w-fit pr-10 inline-block">
+            <h1 className="font-display font-black text-[clamp(2rem,10vw,6rem)] leading-[0.92] text-gradient mb-8 w-fit pr-2 md:pr-10 inline-block">
               Punyamoorthy
             </h1>
           </Motion.div>
@@ -129,12 +129,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex items-center gap-3 mb-8"
+            className="flex flex-wrap items-center gap-2 md:gap-3 mb-8"
           >
-            <span className="text-[clamp(1rem,2.5vw,1.75rem)] font-display text-cream/60">
+            <span className="text-[clamp(1rem,3vw,1.75rem)] font-display text-cream/60">
               &nbsp;
             </span>
-            <span className="text-[clamp(1rem,2.5vw,1.75rem)] font-display text-accent type-cursor">
+            <span className="text-[clamp(1rem,3vw,1.75rem)] font-display text-accent type-cursor">
               {displayed}
             </span>
           </Motion.div>

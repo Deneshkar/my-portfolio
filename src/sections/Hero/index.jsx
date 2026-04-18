@@ -183,7 +183,7 @@ const Hero = () => {
             {/* Image */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-accent/30 hover:border-accent/60 transition-colors duration-500">
               <img
-                src="/profile.jpeg"
+                src={`${import.meta.env.BASE_URL}profile.jpeg`}
                 alt="Deneshkar Punyamoorthy"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />

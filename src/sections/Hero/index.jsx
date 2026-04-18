@@ -93,7 +93,39 @@ const Hero = () => {
 
       {/* ── Main content ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-24 w-full">
-        <div className="relative z-10 max-w-3xl xl:max-w-4xl">
+        <div className="relative z-10 max-w-3xl xl:max-w-4xl pt-10 xl:pt-0">
+
+          {/* Profile Mobile */}
+          <Motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="xl:hidden flex items-center mb-10 mt-8"
+          >
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 pointer-events-auto">
+              {/* Rotating border */}
+              <div className="absolute inset-0 rounded-full border border-accent/20 animate-[spin_20s_linear_infinite]" />
+              <div className="absolute -inset-4 rounded-full border border-accent2/10 animate-[spin_30s_linear_infinite_reverse]" />
+              {/* Glow */}
+              <div className="absolute inset-0 rounded-full bg-accent/5 blur-2xl" />
+              {/* Image */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-accent/30 hover:border-accent/60 transition-colors duration-500">
+                <img
+                  src={profileImg}
+                  alt="Deneshkar Punyamoorthy"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-accent/10 mix-blend-color-dodge pointer-events-none" />
+              </div>
+              {/* Status badge */}
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 glass-card border border-accent/20 rounded-full whitespace-nowrap">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  <span className="font-mono text-xs text-cream/70">Available to work</span>
+                </div>
+              </div>
+            </div>
+          </Motion.div>
 
           {/* Greeting */}
           <Motion.p

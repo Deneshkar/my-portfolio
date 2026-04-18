@@ -6,7 +6,7 @@ const ROLES = [
   'Full-Stack Developer',
   'UI/UX Enthusiast',
   'MERN Stack Builder',
-  'Open Source Contributor',
+  'Passionate Coder',
 ];
 
 const Hero = () => {
@@ -132,7 +132,7 @@ const Hero = () => {
             className="flex items-center gap-3 mb-8"
           >
             <span className="text-[clamp(1rem,2.5vw,1.75rem)] font-display text-cream/60">
-              I build&nbsp;
+              &nbsp;
             </span>
             <span className="text-[clamp(1rem,2.5vw,1.75rem)] font-display text-accent type-cursor">
               {displayed}

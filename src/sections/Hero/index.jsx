@@ -92,7 +92,7 @@ const Hero = () => {
 
       {/* ── Main content ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-24 w-full">
-        <div className="max-w-4xl">
+        <div className="relative z-10 max-w-3xl xl:max-w-4xl">
 
           {/* Greeting */}
           <Motion.p
@@ -109,14 +109,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="whitespace-nowrap inline-block"
           >
             <h1
-              className="glitch font-display font-black text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] text-cream mb-2"
+              className="glitch font-display font-black text-[clamp(2.5rem,8vw,6rem)] leading-[0.92] text-cream mb-2 w-fit pr-10 inline-block"
               data-text="Deneshkar"
             >
               Deneshkar
             </h1>
-            <h1 className="font-display font-black text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] text-gradient mb-8">
+            <br />
+            <h1 className="font-display font-black text-[clamp(2.5rem,8vw,6rem)] leading-[0.92] text-gradient mb-8 w-fit pr-10 inline-block">
               Punyamoorthy
             </h1>
           </Motion.div>
@@ -169,10 +171,10 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block"
+          className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block z-0 pointer-events-none"
           style={{ right: '8%' }}
         >
-          <div className="relative w-64 h-64">
+          <div className="relative w-64 h-64 pointer-events-auto">
             {/* Rotating border */}
             <div className="absolute inset-0 rounded-full border border-accent/20 animate-[spin_20s_linear_infinite]" />
             <div className="absolute -inset-4 rounded-full border border-accent2/10 animate-[spin_30s_linear_infinite_reverse]" />

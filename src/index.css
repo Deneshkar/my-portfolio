@@ -216,13 +216,13 @@
 }
 .glitch::before {
   color: var(--accent3);
-  clip: rect(24px, 550px, 90px, 0);
+  clip: rect(24px, 2000px, 90px, 0);
   transform: skewX(-2deg);
   animation: glitch-anim-1 4s infinite linear alternate-reverse;
 }
 .glitch::after {
   color: var(--accent);
-  clip: rect(85px, 550px, 140px, 0);
+  clip: rect(85px, 2000px, 140px, 0);
   transform: skewX(1deg);
   animation: glitch-anim-2 3.5s infinite linear alternate-reverse;
 }

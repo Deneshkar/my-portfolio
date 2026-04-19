@@ -29,6 +29,15 @@ const projects = [
     tag: "BACKEND",
     color: "#ff79c6",
   },
+  {
+    num: '04',
+    title: "Library Management System",
+    desc: "A Spring Boot MVC application for managing a library with role-based access control, book borrowing, overdue fine calculation, and automated notifications.",
+    tech: ["Java", "Spring Boot", "Thymeleaf", "MySQL"],
+    link: "https://github.com/Deneshkar/Library-Management-System.git",
+    tag: "FULL-STACK",
+    color: "#ffb86c",
+  },
 ];
 
 const ProjectCard = ({ project, index }) => {

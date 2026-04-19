@@ -6,7 +6,7 @@ const projects = [
     num: '01',
     title: "Bakery Management System",
     desc: "Complete web-based bakery management platform featuring real-time inventory tracking, automated sales reporting, and a responsive admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
+    tech: ["Java", "JSP", "Local Storage", "Spring Boot"],
     link: "https://github.com/Deneshkar/Web-Based-Bakery-Management-.git",
     tag: "FULL-STACK",
     color: "#64ffda",

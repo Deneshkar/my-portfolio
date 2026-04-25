@@ -9,6 +9,8 @@ const navLinks = [
   { href: '#contact',    label: 'Contact'    },
 ];
 
+const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
+
 const Navbar = () => {
   const [isOpen,     setIsOpen]     = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
@@ -58,9 +60,8 @@ const Navbar = () => {
             ))}
 
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
+              href={resumeHref}
+              download="resume.pdf"
               data-cursor
               className="btn-primary ml-4"
             >
@@ -106,6 +107,15 @@ const Navbar = () => {
                 {label}
               </Motion.a>
             ))}
+            <a
+              href={resumeHref}
+              download="resume.pdf"
+              onClick={() => setIsOpen(false)}
+              data-cursor
+              className="btn-primary mt-2"
+            >
+              Resume
+            </a>
           </Motion.div>
         )}
       </AnimatePresence>

@@ -9,14 +9,6 @@ const experiences = [
     tags: ['React', 'Node.js', 'TailwindCSS'],
     color: '#64ffda',
   },
-  {
-    role: 'Junior Developer',
-    company: 'Collaborative Academic Projects',
-    period: '2023 – 2024',
-    desc: 'Led frontend and backend development lifecycles in team-based university environments. Built full-stack apps using React and Node.js while embracing Agile workflows.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Git'],
-    color: '#bd93f9',
-  },
 ];
 
 const Experience = () => {

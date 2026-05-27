@@ -1,88 +1,22 @@
-import { useEffect, useRef } from 'react';
-
-const PARTICLE_COUNT = 60;
-
 const TechBackground = () => {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    let W = canvas.width  = window.innerWidth;
-    let H = canvas.height = window.innerHeight;
-
-    const onResize = () => {
-      W = canvas.width  = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', onResize);
-
-    /* Particles */
-    const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.5 + 0.5,
-    }));
-
-    let raf;
-    const CONNECTION_DIST = 130;
-
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H);
-
-      /* Update */
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-      });
-
-      /* Connections */
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            const alpha = (1 - dist / CONNECTION_DIST) * 0.18;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(100, 255, 218, ${alpha})`;
-            ctx.lineWidth = 0.7;
-            ctx.stroke();
-          }
-        }
-      }
-
-      /* Dots */
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(100, 255, 218, 0.5)';
-        ctx.fill();
-      });
-
-      raf = requestAnimationFrame(draw);
-    };
-
-    draw();
-    return () => {
-      window.removeEventListener('resize', onResize);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-30"
-    />
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(49,215,255,0.08),transparent_22%),radial-gradient(circle_at_80%_18%,rgba(73,108,255,0.06),transparent_26%),linear-gradient(to_bottom,rgba(3,7,13,0.2),rgba(3,7,13,0.88))]" />
+      <div
+        className="absolute inset-0 opacity-[0.22]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+          backgroundSize: '42px 42px',
+        }}
+      />
+      <div className="absolute top-20 left-[-10rem] h-80 w-80 rounded-full bg-[#31d7ff]/10 blur-[120px]" />
+      <div className="absolute top-[18rem] right-[-6rem] h-72 w-72 rounded-full bg-[#496cff]/10 blur-[120px]" />
+      <div
+        className="absolute inset-0 opacity-[0.12]"
+        style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px)', backgroundSize: '7px 7px' }}
+      />
+    </div>
   );
 };
 

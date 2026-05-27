@@ -1,200 +1,169 @@
 import { motion as Motion } from 'framer-motion';
-import { useState } from 'react';
 
 const projects = [
   {
-    num: '01',
-    title: "Bakery Management System",
-    desc: "Complete web-based bakery management platform featuring real-time inventory tracking, automated sales reporting, and a responsive admin dashboard.",
-    tech: ["Java", "JSP", "Local Storage", "Spring Boot"],
-    link: "https://github.com/Deneshkar/Web-Based-Bakery-Management-.git",
-    tag: "FULL-STACK",
-    color: "#64ffda",
+    index: '01',
+    label: 'Full-Stack',
+    accent: '#31d7ff',
+    title: 'Food Order App',
+    desc: 'A simple food ordering app with a separate frontend and backend, built to make browsing, ordering, and managing data straightforward.',
+    tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    type: 'split',
+    frontendHref: 'https://github.com/Deneshkar/Food-Order-Frontend.git',
+    backendHref: 'https://github.com/Deneshkar/Food-Order-backend.git',
   },
   {
-    num: '02',
-    title: "Food Order App — Frontend",
-    desc: "Sleek, animated food ordering interface with cart management, menu browsing, and seamless checkout experience built with modern React patterns.",
-    tech: ["React", "Tailwind CSS", "Context API"],
-    link: "https://github.com/Deneshkar/Food-Order-Frontend.git",
-    tag: "FRONTEND",
-    color: "#bd93f9",
+    index: '02',
+    label: 'Java',
+    accent: '#8e6cff',
+    title: 'Library Management System',
+    desc: 'A Spring Boot library system for managing books, borrowers, issuing, returns, and admin tasks in one place.',
+    tech: ['Java', 'Spring Boot', 'Thymeleaf', 'MySQL'],
+    type: 'single',
+    repoHref: 'https://github.com/Deneshkar/Library-Management-System.git',
   },
   {
-    num: '03',
-    title: "Food Order App — Backend",
-    desc: "Robust RESTful API architecture with JWT authentication, granular order management, and optimized MongoDB data pipelines.",
-    tech: ["Node.js", "Express", "MongoDB", "JWT"],
-    link: "https://github.com/Deneshkar/Food-Order-backend.git",
-    tag: "BACKEND",
-    color: "#ff79c6",
+    index: '03',
+    label: 'Full-Stack',
+    accent: '#ff8d4d',
+    title: 'Web-Based Bakery Management System',
+    desc: 'A bakery management system for handling orders, inventory, and sales with a clear daily workflow.',
+    tech: ['Java', 'Spring Boot', 'Inventory', 'Sales Tracking'],
+    type: 'single',
+    repoHref: 'https://github.com/Deneshkar/Web-Based-Bakery-Management-.git',
   },
   {
-    num: '04',
-    title: "Library Management System",
-    desc: "A Spring Boot MVC application for managing a library with role-based access control, book borrowing, overdue fine calculation, and automated notifications.",
-    tech: ["Java", "Spring Boot", "Thymeleaf", "MySQL"],
-    link: "https://github.com/Deneshkar/Library-Management-System.git",
-    tag: "FULL-STACK",
-    color: "#ffb86c",
+    index: '04',
+    label: 'MERN',
+    accent: '#ff6fb0',
+    title: 'Rice Mill Management System',
+    desc: 'A rice mill system with separate frontend and backend repos for managing operations, records, and workflow.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    type: 'split',
+    frontendHref: 'https://github.com/Deneshkar/Rice-Mill-Management-Frontend.git',
+    backendHref: 'https://github.com/Deneshkar/Rice-Mill-Management-Backend.git',
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <Motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      data-cursor
-      className="group relative"
+const ProjectCard = ({ project }) => (
+  <Motion.article
+    initial={{ opacity: 0, y: 28 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.55 }}
+    className="flex h-full min-h-[430px] flex-col overflow-hidden rounded-2xl border border-[#223042] bg-[#0b1420] shadow-[0_16px_50px_rgba(0,0,0,0.22)]"
+  >
+    <div
+      className="relative h-48 border-b border-[#223042] bg-[linear-gradient(180deg,rgba(10,18,30,1)_0%,rgba(12,22,34,1)_100%)]"
+      style={{ boxShadow: `inset 0 1px 0 ${project.accent}15` }}
     >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(49,215,255,0.14),transparent_55%)]" />
       <div
-        className="relative glass-card rounded-2xl overflow-hidden transition-all duration-500"
-        style={{
-          borderColor: hovered ? `${project.color}30` : 'rgba(240,235,224,0.07)',
-          boxShadow: hovered ? `0 20px 60px ${project.color}15, 0 0 0 1px ${project.color}20` : 'none',
-        }}
+        className="absolute left-4 top-4 rounded-full border px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em]"
+        style={{ borderColor: `${project.accent}55`, color: project.accent, backgroundColor: `${project.accent}10` }}
       >
-        {/* Number + Tag header */}
-        <div className="relative h-44 overflow-hidden"
-          style={{ background: `radial-gradient(ellipse at 50% 80%, ${project.color}12 0%, transparent 70%)` }}
-        >
-          {/* Big background number */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black text-[8rem] leading-none select-none transition-all duration-500 pointer-events-none"
-            style={{ color: `${project.color}15`, transform: hovered ? 'translate(-50%, -55%) scale(1.1)' : 'translate(-50%, -50%)' }}
-          >
-            {project.num}
-          </div>
+        {project.label}
+      </div>
+      <div
+        className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border transition-transform duration-300 group-hover:scale-105"
+        style={{ borderColor: `${project.accent}55`, color: project.accent, backgroundColor: `${project.accent}10` }}
+      >
+        ↗
+      </div>
+      <div className="absolute left-4 top-10 select-none font-display font-black leading-none text-[6.5rem] tracking-tight text-white/5 md:text-[7.5rem]">
+        {project.index}
+      </div>
+      <div className="absolute bottom-4 left-4 right-4 rounded-lg border border-[#223042] bg-[#08111d]/75 p-3">
+        <div className="h-2 w-[72%] rounded-full bg-white/10" />
+        <div className="mt-2 h-2 w-[88%] rounded-full bg-white/5" />
+        <div className="mt-2 h-2 w-[64%] rounded-full bg-white/5" />
+      </div>
+    </div>
 
-          {/* Tag badge */}
-          <div className="absolute top-4 left-4">
-            <span
-              className="font-mono text-[10px] tracking-[0.25em] uppercase px-3 py-1.5 rounded-full border text-xs"
-              style={{ color: project.color, borderColor: `${project.color}40`, background: `${project.color}10` }}
-            >
-              {project.tag}
+    <div className="flex flex-1 flex-col p-5 md:p-6">
+      <div className="flex-1">
+        <h3 className="text-[1.3rem] font-bold leading-tight text-[#f5f8fc] lg:text-[1.45rem]">{project.title}</h3>
+        <p className="mt-2.5 text-[12.5px] leading-6 text-[#9fb0c6]">{project.desc}</p>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span key={tech} className="rounded-full border border-[#223042] bg-[#08111d] px-2.5 py-1 text-[10px] text-[#c9d4e5]">
+              {tech}
             </span>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          {/* GitHub arrow */}
+      <div className="mt-4 border-t border-[#223042] pt-3.5">
+        {project.type === 'split' ? (
+          <div className="grid gap-3 sm:grid-cols-2">
+            <a
+              href={project.frontendHref}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor
+              className="inline-flex items-center justify-center rounded-md border border-[#31d7ff] bg-[#31d7ff] px-4 py-2.5 text-[11px] font-semibold text-[#06111d] transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              Frontend Repo
+            </a>
+            <a
+              href={project.backendHref}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor
+              className="inline-flex items-center justify-center rounded-md border border-[#223042] bg-transparent px-4 py-2.5 text-[11px] font-semibold text-[#f5f8fc] transition-colors duration-300 hover:border-[#31d7ff] hover:text-[#31d7ff]"
+            >
+              Backend Repo
+            </a>
+          </div>
+        ) : (
           <a
-            href={project.link}
+            href={project.repoHref}
             target="_blank"
             rel="noreferrer"
             data-cursor
-            className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-300"
-            style={{ borderColor: `${project.color}40`, color: project.color }}
-            aria-label={`GitHub: ${project.title}`}
+            className="inline-flex w-full items-center justify-center rounded-md border border-[#31d7ff] bg-[#31d7ff] px-4 py-2.5 text-[11px] font-semibold text-[#06111d] transition-transform duration-300 hover:-translate-y-0.5"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
+            View Repository
           </a>
-        </div>
-
-        {/* Card body */}
-        <div className="p-6">
-          <h3 className="font-display font-bold text-xl text-cream mb-3 leading-tight group-hover:text-white transition-colors">
-            {project.title}
-          </h3>
-          <p className="font-sans text-cream/55 text-sm leading-relaxed mb-5">
-            {project.desc}
-          </p>
-
-          {/* Tech pills */}
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((t) => (
-              <span
-                key={t}
-                className="font-mono text-[11px] tracking-wider px-2.5 py-1 rounded text-cream/50"
-                style={{ background: `${project.color}0d`, border: `1px solid ${project.color}20` }}
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom hover line */}
-        <div
-          className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full transition-all duration-500"
-          style={{ background: `linear-gradient(90deg, transparent, ${project.color}, transparent)` }}
-        />
+        )}
       </div>
-    </Motion.div>
-  );
-};
+    </div>
+  </Motion.article>
+);
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative py-32 bg-navy-light overflow-hidden">
-      <div className="section-line" />
+    <section id="projects" className="border-b border-[#223042] py-20 lg:py-24">
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        <Motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-[#31d7ff]"
+        >
+          // 02. Portfolio
+        </Motion.p>
 
-      {/* Ambient */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent3/4 blur-[120px] pointer-events-none" />
+        <Motion.h2
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55 }}
+          className="mt-3 text-[clamp(2rem,5vw,3.4rem)] font-display font-black leading-none text-[#f5f8fc]"
+        >
+          Selected Work
+        </Motion.h2>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="flex items-end gap-6 mb-16">
-          <div>
-            <Motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-mono text-accent text-sm tracking-widest mb-3"
-            >
-              03. Projects
-            </Motion.p>
-            <Motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-black text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-cream"
-            >
-              FEATURED<br />
-              <span className="text-gradient-reverse">WORK</span>
-            </Motion.h2>
-          </div>
-          <Motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex-1 h-px bg-gradient-to-r from-accent3/40 to-transparent mb-4 origin-left"
-          />
-        </div>
+        <p className="mt-4 max-w-2xl text-sm leading-7 text-[#9fb0c6]">
+          A simple overview of the projects I’ve built. Each card gives you a quick summary and direct access to the code.
+        </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.num} project={p} index={i} />
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {projects.map((item) => (
+            <ProjectCard key={item.title} project={item} />
           ))}
         </div>
-
-        {/* CTA */}
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <a
-            href="https://github.com/Deneshkar"
-            target="_blank"
-            rel="noreferrer"
-            data-cursor
-            className="btn-secondary inline-block"
-          >
-            View All on GitHub ↗
-          </a>
-        </Motion.div>
       </div>
     </section>
   );

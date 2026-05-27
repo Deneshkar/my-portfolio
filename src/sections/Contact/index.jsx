@@ -2,103 +2,81 @@ import { motion as Motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative py-40 bg-navy overflow-hidden">
-      <div className="section-line" />
-
-      {/* Ambient orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[140px] pointer-events-none animate-pulse-glow" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full bg-accent3/6 blur-[100px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 text-center">
-        {/* Number label */}
-        <Motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-mono text-accent text-sm tracking-widest mb-6"
-        >
-          06. Contact
-        </Motion.p>
-
-        {/* Headline */}
+    <section id="contact" className="border-b border-[#223042] py-20 lg:py-24">
+      <div className="mx-auto max-w-4xl px-5 text-center lg:px-8">
         <Motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-black text-[clamp(2.5rem,8vw,8rem)] leading-[0.88] text-cream mb-6 break-words"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-[clamp(2.2rem,6vw,4rem)] font-display font-black leading-none text-[#f5f8fc]"
         >
-          LET'S<br />
-          <span className="text-gradient block w-full overflow-hidden text-ellipsis px-2 sm:px-0">COLLABORATE</span>
+          Get In Touch
         </Motion.h2>
 
-        {/* Sub */}
         <Motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="max-w-xl mx-auto font-sans text-cream/55 text-lg leading-relaxed mb-14"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-[#9fb0c6]"
         >
-          Open to internships, freelance projects, and exciting engineering challenges.
-          My inbox is always open — let's create something great together.
+          I&apos;m open to internship opportunities for 2026. If you want to talk about a role, a project, or an idea, send a message.
         </Motion.p>
 
-        {/* Email CTA */}
-        <Motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col items-center gap-6"
-        >
-          <a
-            href="mailto:deneshkar015@gmail.com"
-            id="contact-email-btn"
-            aria-label="Send an email to Deneshkar"
-            data-cursor
-            className="btn-primary text-base"
-          >
-            <span>Say Hello ↗</span>
-          </a>
-
-          {/* Email display */}
-          <a
-            href="mailto:deneshkar015@gmail.com"
-            data-cursor
-            className="font-mono text-sm text-cream/35 hover:text-accent transition-colors duration-300 tracking-widest"
-          >
-            deneshkar015@gmail.com
-          </a>
-        </Motion.div>
-
-        {/* Social Links */}
-        <Motion.div
+        <Motion.form
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 flex items-center justify-center gap-8"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mx-auto mt-10 rounded-2xl border border-[#223042] bg-[#0d1521] p-5 text-left shadow-[0_20px_60px_rgba(0,0,0,0.2)]"
         >
-          {[
-            { href: 'https://github.com/Deneshkar', label: 'GitHub' },
-            { href: 'https://www.linkedin.com/in/deneshkar-punyamoorthy-450931350', label: 'LinkedIn' },
-          ].map(({ href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor
-              className="font-mono text-xs tracking-widest uppercase text-cream/40 hover:text-accent transition-colors duration-300 flex items-center gap-2"
-            >
-              {label}
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </a>
-          ))}
-        </Motion.div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="block">
+              <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-[#9fb0c6]">Your Name</span>
+              <input
+                type="text"
+                placeholder="John Doe"
+                className="w-full rounded-lg border border-[#223042] bg-[#08111d] px-4 py-3 text-sm text-[#f5f8fc] outline-none transition-colors placeholder:text-[#5f6f86] focus:border-[#31d7ff]"
+              />
+            </label>
+
+            <label className="block">
+              <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-[#9fb0c6]">Email Address</span>
+              <input
+                type="email"
+                placeholder="john@example.com"
+                className="w-full rounded-lg border border-[#223042] bg-[#08111d] px-4 py-3 text-sm text-[#f5f8fc] outline-none transition-colors placeholder:text-[#5f6f86] focus:border-[#31d7ff]"
+              />
+            </label>
+          </div>
+
+          <label className="mt-4 block">
+            <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-[#9fb0c6]">Message</span>
+            <textarea
+              rows="6"
+              placeholder="Let's build something amazing..."
+              className="w-full resize-none rounded-lg border border-[#223042] bg-[#08111d] px-4 py-3 text-sm text-[#f5f8fc] outline-none transition-colors placeholder:text-[#5f6f86] focus:border-[#31d7ff]"
+            />
+          </label>
+
+          <button
+            type="button"
+            data-cursor
+            className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-[#31d7ff] px-5 py-3 text-sm font-semibold text-[#06111d] transition-transform duration-300 hover:-translate-y-0.5"
+          >
+            Send Message
+          </button>
+        </Motion.form>
+
+        <div className="mt-8 flex items-center justify-center gap-6 text-sm text-[#9fb0c6]">
+          <a href="https://github.com/Deneshkar" target="_blank" rel="noreferrer" data-cursor className="hover:text-[#31d7ff]">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/deneshkar-punyamoorthy-450931350" target="_blank" rel="noreferrer" data-cursor className="hover:text-[#31d7ff]">
+            LinkedIn
+          </a>
+        </div>
       </div>
     </section>
   );

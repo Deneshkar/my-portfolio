@@ -1,117 +1,85 @@
 import { motion as Motion } from 'framer-motion';
 
-const skills = [
-  { name: 'React',        icon: '⚛',  color: '#61dafb', level: 90 },
-  { name: 'JavaScript',  icon: 'JS', color: '#f7df1e', level: 88 },
-  { name: 'TypeScript',  icon: 'TS', color: '#3178c6', level: 72 },
-  { name: 'Python',      icon: 'Py', color: '#3776ab', level: 78 },
-  { name: 'Java',        icon: 'Jv', color: '#f89820', level: 80 },
-  { name: 'Node.js',     icon: '⬡',  color: '#68a063', level: 82 },
-  { name: 'Spring Boot', icon: 'SB', color: '#6db33f', level: 75 },
-  { name: 'MongoDB',     icon: '🍃', color: '#47a248', level: 78 },
-  { name: 'MySQL',       icon: 'MY', color: '#00758f', level: 82 },
-  { name: 'C',           icon: 'C',  color: '#a8b9cc', level: 70 },
-  { name: 'C++',         icon: 'C+', color: '#00599c', level: 72 },
-  { name: 'Express.js',  icon: '⚡', color: '#888888', level: 80 },
-  { name: 'Next.js',     icon: '▲',  color: '#ffffff', level: 68 },
-  { name: 'Tailwind CSS',icon: '🌊', color: '#38bdf8', level: 92 },
-  { name: 'Git & GitHub',icon: '🔀', color: '#f05032', level: 85 },
-  { name: 'Figma',       icon: '🎨', color: '#f24e1e', level: 65 },
+const skillGroups = [
+  {
+    title: 'Frontend',
+    icon: '⌘',
+    items: ['React', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+  },
+  {
+    title: 'Backend',
+    icon: '◉',
+    items: ['Node.js', 'Express.js', 'Spring Boot'],
+  },
+  {
+    title: 'Database',
+    icon: '◫',
+    items: ['MongoDB', 'MySQL'],
+  },
+  {
+    title: 'Programming Languages',
+    icon: '◌',
+    items: ['Python', 'Java', 'C', 'C++'],
+  },
+  {
+    title: 'Tools',
+    icon: '⌁',
+    items: ['Git & GitHub', 'Figma' , 'Postman', 'VS Code', 'IntelliJ IDEA' , 'Docker'],
+  },
 ];
 
-const SkillCard = ({ name, icon, color, level, index }) => (
-  <Motion.div
-    initial={{ opacity: 0, y: 40 }}
+const SkillCard = ({ title, icon, items, index }) => (
+  <Motion.article
+    initial={{ opacity: 0, y: 18 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-    whileHover={{ y: -6 }}
-    data-cursor
-    className="glass-card rounded-xl p-6 flex flex-col items-center gap-4 group hover:border-accent/20 transition-all duration-300"
+    viewport={{ once: true, amount: 0.35 }}
+    transition={{ duration: 0.5, delay: index * 0.06 }}
+    className="rounded-xl border border-[#223042] bg-[#0d1521] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.18)]"
   >
-    {/* Ring progress */}
-    <div className="relative w-16 h-16">
-      <svg className="w-full h-full -rotate-90" viewBox="0 0 56 56">
-        <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
-        <Motion.circle
-          cx="28" cy="28" r="24"
-          fill="none"
-          stroke={color}
-          strokeWidth="4"
-          strokeLinecap="round"
-          strokeDasharray={`${2 * Math.PI * 24}`}
-          initial={{ strokeDashoffset: 2 * Math.PI * 24 }}
-          whileInView={{ strokeDashoffset: 2 * Math.PI * 24 * (1 - level / 100) }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: index * 0.06 + 0.3, ease: 'easeOut' }}
-          style={{ filter: `drop-shadow(0 0 6px ${color}80)` }}
-        />
-      </svg>
-      {/* Icon in center */}
-      <div
-        className="absolute inset-0 flex items-center justify-center font-bold text-lg"
-        style={{ color }}
-      >
+    <div className="flex items-center gap-3 text-[#31d7ff]">
+      <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#31d7ff]/25 bg-[#08111d] text-lg">
         {icon}
       </div>
+      <h3 className="font-display text-2xl font-bold text-[#f5f8fc]">{title}</h3>
     </div>
 
-    <p className="font-sans text-sm font-semibold text-cream/80 group-hover:text-cream transition-colors text-center">
-      {name}
-    </p>
-    <p className="font-mono text-xs" style={{ color: `${color}aa` }}>
-      {level}%
-    </p>
-  </Motion.div>
+    <ul className="mt-5 space-y-3 text-sm leading-6 text-[#c9d4e5]">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#31d7ff]" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </Motion.article>
 );
 
 const Skills = () => {
   return (
-    <section id="skills" className="relative py-32 bg-navy overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[600px] h-[600px] rounded-full bg-accent2/4 blur-[120px]" />
-      </div>
+    <section id="skills" className="border-b border-[#223042] py-20 lg:py-24">
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        <Motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-[#31d7ff]"
+        >
+          // 03. Expertise
+        </Motion.p>
 
-      {/* Section line */}
-      <div className="section-line" />
+        <Motion.h2
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55 }}
+          className="mt-3 text-[clamp(2rem,5vw,3.4rem)] font-display font-black leading-none text-[#f5f8fc]"
+        >
+          Technical Arsenal
+        </Motion.h2>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <div className="flex items-end gap-6 mb-16">
-          <div>
-            <Motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-mono text-accent text-sm tracking-widest mb-3"
-            >
-              02. Skills
-            </Motion.p>
-            <Motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-black text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] text-cream"
-            >
-              CORE<br />
-              <span className="text-gradient">EXPERTISE</span>
-            </Motion.h2>
-          </div>
-          <Motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex-1 h-px bg-gradient-to-r from-accent/40 to-transparent mb-4 origin-left"
-          />
-        </div>
-
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {skills.map((skill, i) => (
-            <SkillCard key={skill.name} {...skill} index={i} />
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {skillGroups.map((group, index) => (
+            <SkillCard key={group.title} {...group} index={index} />
           ))}
         </div>
       </div>

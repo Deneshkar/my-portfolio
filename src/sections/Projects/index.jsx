@@ -3,170 +3,272 @@ import { motion as Motion } from 'framer-motion';
 const projects = [
   {
     index: '01',
-    label: 'Full-Stack',
-    accent: '#31d7ff',
+    label: 'Full-Stack · MERN',
+    accentFrom: '#8b5cf6',
+    accentTo: '#d946ef',
     title: 'Food Order App',
-    desc: 'A simple food ordering app with a separate frontend and backend, built to make browsing, ordering, and managing data straightforward.',
+    desc: 'A modern food ordering platform with a separate frontend & backend, featuring real-time cart management, JWT auth, and a clean UI.',
     tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT'],
     type: 'split',
     frontendHref: 'https://github.com/Deneshkar/Food-Order-Frontend.git',
-    backendHref: 'https://github.com/Deneshkar/Food-Order-backend.git',
+    backendHref:  'https://github.com/Deneshkar/Food-Order-backend.git',
+    icon: '🍕',
   },
   {
     index: '02',
-    label: 'Java',
-    accent: '#8e6cff',
-    title: 'Library Management System',
-    desc: 'A Spring Boot library system for managing books, borrowers, issuing, returns, and admin tasks in one place.',
+    label: 'Java · Backend',
+    accentFrom: '#6366f1',
+    accentTo: '#38bdf8',
+    title: 'Library Management',
+    desc: 'A Spring Boot library system for managing books, borrowers, issuing, returns, and admin tasks with a clean dashboard.',
     tech: ['Java', 'Spring Boot', 'Thymeleaf', 'MySQL'],
     type: 'single',
     repoHref: 'https://github.com/Deneshkar/Library-Management-System.git',
+    icon: '📚',
   },
   {
     index: '03',
-    label: 'Full-Stack',
-    accent: '#ff8d4d',
-    title: 'Web-Based Bakery Management System',
-    desc: 'A bakery management system for handling orders, inventory, and sales with a clear daily workflow.',
+    label: 'Full-Stack · Java',
+    accentFrom: '#f59e0b',
+    accentTo: '#ec4899',
+    title: 'Bakery Management',
+    desc: 'A complete bakery management system for handling orders, inventory tracking, and sales reporting with a daily workflow.',
     tech: ['Java', 'Spring Boot', 'Inventory', 'Sales Tracking'],
     type: 'single',
     repoHref: 'https://github.com/Deneshkar/Web-Based-Bakery-Management-.git',
+    icon: '🥐',
   },
   {
     index: '04',
-    label: 'MERN',
-    accent: '#ff6fb0',
-    title: 'Rice Mill Management System',
-    desc: 'A rice mill system with separate frontend and backend repos for managing operations, records, and workflow.',
+    label: 'Full-Stack · MERN',
+    accentFrom: '#34d399',
+    accentTo: '#6366f1',
+    title: 'Rice Mill System',
+    desc: 'A rice mill management platform with separate frontend & backend repos for managing operations, records, and workflow.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
     type: 'split',
     frontendHref: 'https://github.com/Deneshkar/Rice-Mill-Management-Frontend.git',
-    backendHref: 'https://github.com/Deneshkar/Rice-Mill-Management-Backend.git',
+    backendHref:  'https://github.com/Deneshkar/Rice-Mill-Management-Backend.git',
+    icon: '🌾',
+  },
+  {
+    index: '05',
+    label: 'Mobile App · Flutter',
+    accentFrom: '#22d3ee',
+    accentTo: '#818cf8',
+    title: 'Monthly Expense Tracker',
+    desc: 'A Flutter app for effortless personal finance management — track monthly spending, set budget goals, manage loans, analyze expenses with pie charts, and export detailed PDF reports.',
+    tech: ['Flutter', 'Dart', 'SQLite'],
+    type: 'single',
+    repoHref: 'https://github.com/Deneshkar/Monthly-Expense-Tracker.git',
+    demoHref: 'https://deneshkar.github.io/Monthly-Expense-Tracker/',
+    icon: '💰',
   },
 ];
 
-const ProjectCard = ({ project }) => (
+const ProjectCard = ({ project, index: cardIndex }) => (
   <Motion.article
-    initial={{ opacity: 0, y: 28 }}
+    initial={{ opacity: 0, y: 32 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.55 }}
-    className="flex h-full min-h-[430px] flex-col overflow-hidden rounded-2xl border border-[#223042] bg-[#0b1420] shadow-[0_16px_50px_rgba(0,0,0,0.22)]"
+    viewport={{ once: true, amount: 0.25 }}
+    transition={{ duration: 0.6, delay: cardIndex * 0.08 }}
+    whileHover={{ y: -6, transition: { duration: 0.3 } }}
+    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-violet-500/10 bg-[#0e0920]/80 backdrop-blur-sm shadow-xl"
   >
+    {/* Top gradient bar */}
     <div
-      className="relative h-48 border-b border-[#223042] bg-[linear-gradient(180deg,rgba(10,18,30,1)_0%,rgba(12,22,34,1)_100%)]"
-      style={{ boxShadow: `inset 0 1px 0 ${project.accent}15` }}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(49,215,255,0.14),transparent_55%)]" />
-      <div
-        className="absolute left-4 top-4 rounded-full border px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em]"
-        style={{ borderColor: `${project.accent}55`, color: project.accent, backgroundColor: `${project.accent}10` }}
-      >
-        {project.label}
-      </div>
-      <div
-        className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border transition-transform duration-300 group-hover:scale-105"
-        style={{ borderColor: `${project.accent}55`, color: project.accent, backgroundColor: `${project.accent}10` }}
-      >
-        ↗
-      </div>
-      <div className="absolute left-4 top-10 select-none font-display font-black leading-none text-[6.5rem] tracking-tight text-white/5 md:text-[7.5rem]">
+      className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-300 group-hover:opacity-100 opacity-60"
+      style={{ background: `linear-gradient(90deg, ${project.accentFrom}, ${project.accentTo})` }}
+    />
+
+    {/* Card header */}
+    <div className="relative p-6 pb-4">
+      {/* Number watermark */}
+      <span className="absolute top-4 right-5 font-display font-black text-7xl text-white/4 leading-none select-none">
         {project.index}
+      </span>
+
+      <div className="flex items-center gap-3">
+        {/* Icon */}
+        <div
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl border border-violet-500/15 bg-violet-500/8 shadow-lg transition-all duration-300 group-hover:scale-110"
+          style={{ boxShadow: `0 8px 30px ${project.accentFrom}25` }}
+        >
+          {project.icon}
+        </div>
+
+        {/* Label badge */}
+        <span
+          className="rounded-full px-2.5 py-1 text-[9px] font-mono font-bold uppercase tracking-[0.25em] border whitespace-nowrap overflow-hidden"
+          style={{
+            color: project.accentFrom,
+            borderColor: `${project.accentFrom}40`,
+            background: `${project.accentFrom}12`,
+          }}
+        >
+          {project.label}
+        </span>
       </div>
-      <div className="absolute bottom-4 left-4 right-4 rounded-lg border border-[#223042] bg-[#08111d]/75 p-3">
-        <div className="h-2 w-[72%] rounded-full bg-white/10" />
-        <div className="mt-2 h-2 w-[88%] rounded-full bg-white/5" />
-        <div className="mt-2 h-2 w-[64%] rounded-full bg-white/5" />
-      </div>
+
+      <h3 className="mt-4 text-[1.25rem] font-display font-bold text-white leading-tight group-hover:text-gradient transition-all duration-300">
+        {project.title}
+      </h3>
+      <p className="mt-2 text-[13px] leading-6 text-[#a78bfa]/65">
+        {project.desc}
+      </p>
     </div>
 
-    <div className="flex flex-1 flex-col p-5 md:p-6">
-      <div className="flex-1">
-        <h3 className="text-[1.3rem] font-bold leading-tight text-[#f5f8fc] lg:text-[1.45rem]">{project.title}</h3>
-        <p className="mt-2.5 text-[12.5px] leading-6 text-[#9fb0c6]">{project.desc}</p>
+    {/* Tech + footer block — bottom-anchored so every card's footer lines up */}
+    <div className="mt-auto flex flex-col">
+      {/* Tech tags */}
+      <div className="px-6 flex flex-wrap gap-1.5">
+      {project.tech.map((tech) => (
+        <span
+          key={tech}
+          className="rounded-full border border-violet-500/15 bg-violet-500/5 px-2.5 py-0.5 text-[10px] font-mono text-[#c4b5fd]/60"
+        >
+          {tech}
+        </span>
+      ))}
+    </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
-            <span key={tech} className="rounded-full border border-[#223042] bg-[#08111d] px-2.5 py-1 text-[10px] text-[#c9d4e5]">
-              {tech}
-            </span>
-          ))}
+    {/* Divider */}
+    <div className="mx-6 h-px bg-gradient-to-r from-transparent via-violet-500/15 to-transparent" />
+
+    {/* Links */}
+    <div className="p-5">
+      {project.type === 'split' ? (
+        <div className="grid grid-cols-2 gap-2">
+          <a
+            href={project.frontendHref}
+            target="_blank"
+            rel="noreferrer"
+            data-cursor
+            className="flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[11px] font-mono font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})`, boxShadow: `0 4px 20px ${project.accentFrom}35` }}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            Frontend
+          </a>
+          <a
+            href={project.backendHref}
+            target="_blank"
+            rel="noreferrer"
+            data-cursor
+            className="flex items-center justify-center gap-1.5 rounded-xl border border-violet-500/20 bg-violet-500/5 py-2.5 text-[11px] font-mono font-bold text-[#c4b5fd] transition-all duration-300 hover:border-violet-500/40 hover:-translate-y-0.5"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+            </svg>
+            Backend
+          </a>
         </div>
-      </div>
-
-      <div className="mt-4 border-t border-[#223042] pt-3.5">
-        {project.type === 'split' ? (
-          <div className="grid gap-3 sm:grid-cols-2">
-            <a
-              href={project.frontendHref}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor
-              className="inline-flex items-center justify-center rounded-md border border-[#31d7ff] bg-[#31d7ff] px-4 py-2.5 text-[11px] font-semibold text-[#06111d] transition-transform duration-300 hover:-translate-y-0.5"
-            >
-              Frontend Repo
-            </a>
-            <a
-              href={project.backendHref}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor
-              className="inline-flex items-center justify-center rounded-md border border-[#223042] bg-transparent px-4 py-2.5 text-[11px] font-semibold text-[#f5f8fc] transition-colors duration-300 hover:border-[#31d7ff] hover:text-[#31d7ff]"
-            >
-              Backend Repo
-            </a>
-          </div>
-        ) : (
+      ) : project.demoHref ? (
+        <div className="grid grid-cols-2 gap-2">
           <a
             href={project.repoHref}
             target="_blank"
             rel="noreferrer"
             data-cursor
-            className="inline-flex w-full items-center justify-center rounded-md border border-[#31d7ff] bg-[#31d7ff] px-4 py-2.5 text-[11px] font-semibold text-[#06111d] transition-transform duration-300 hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[11px] font-mono font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})`, boxShadow: `0 4px 20px ${project.accentFrom}35` }}
           >
-            View Repository
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Repository
           </a>
-        )}
-      </div>
+          <a
+            href={project.demoHref}
+            target="_blank"
+            rel="noreferrer"
+            data-cursor
+            className="flex items-center justify-center gap-1.5 rounded-xl border border-violet-500/20 bg-violet-500/5 py-2.5 text-[11px] font-mono font-bold text-[#c4b5fd] transition-all duration-300 hover:border-violet-500/40 hover:-translate-y-0.5"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            Live Demo
+          </a>
+        </div>
+      ) : (
+        <a
+          href={project.repoHref}
+          target="_blank"
+          rel="noreferrer"
+          data-cursor
+          className="flex items-center justify-center gap-2 w-full rounded-xl py-2.5 text-[11px] font-mono font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+          style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})`, boxShadow: `0 4px 20px ${project.accentFrom}35` }}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          View Repository
+        </a>
+      )}
+    </div>
     </div>
   </Motion.article>
 );
 
 const Projects = () => {
   return (
-    <section id="projects" className="border-b border-[#223042] py-20 lg:py-24">
+    <section id="projects" className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute left-0 top-1/3 w-[400px] h-[400px] rounded-full bg-fuchsia-600/5 blur-[120px] pointer-events-none" />
+
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <Motion.p
-          initial={{ opacity: 0, y: 10 }}
+        {/* Header */}
+        <Motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-[#31d7ff]"
+          className="mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-6"
         >
-          // 02. Portfolio
-        </Motion.p>
+          <div>
+            <p className="section-label mb-3">Portfolio</p>
+            <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-white leading-none">
+              Selected{' '}
+              <span className="text-gradient-warm">Work</span>
+            </h2>
+          </div>
+          <p className="text-sm text-[#a78bfa]/60 max-w-sm">
+            Projects built from scratch — each one solving a real problem with clean code and thoughtful design.
+          </p>
+        </Motion.div>
 
-        <Motion.h2
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55 }}
-          className="mt-3 text-[clamp(2rem,5vw,3.4rem)] font-display font-black leading-none text-[#f5f8fc]"
-        >
-          Selected Work
-        </Motion.h2>
-
-        <p className="mt-4 max-w-2xl text-sm leading-7 text-[#9fb0c6]">
-          A simple overview of the projects I’ve built. Each card gives you a quick summary and direct access to the code.
-        </p>
-
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {projects.map((item) => (
-            <ProjectCard key={item.title} project={item} />
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-2">
+          {projects.map((item, i) => (
+            <ProjectCard key={item.title} project={item} index={i} />
           ))}
         </div>
+
+        {/* GitHub CTA */}
+        <Motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-10 text-center"
+        >
+          <a
+            href="https://github.com/Deneshkar"
+            target="_blank"
+            rel="noreferrer"
+            data-cursor
+            className="btn-secondary inline-flex"
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            View All on GitHub
+          </a>
+        </Motion.div>
       </div>
     </section>
   );
 };
-//new
+
 export default Projects;

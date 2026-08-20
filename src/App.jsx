@@ -12,7 +12,7 @@ import Footer from './sections/Footer/index.jsx';
 
 function App() {
   return (
-    <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#08111d] text-[#e9eef5]">
+    <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#05030f] text-[#ede9fe]">
       {/* Global UI elements */}
       <CustomCursor />
       <ScrollProgress />

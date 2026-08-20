@@ -1,70 +1,130 @@
 import { motion as Motion } from 'framer-motion';
 import profileImg from '../../assets/profile.jpeg';
 
-const skills = ['React', 'Node.js', 'Spring Boot', 'MongoDB', 'Java', 'Tailwind CSS'];
+const stats = [
+  { value: '5',  label: 'Projects Built',  icon: '🚀' },
+  { value: '4+', label: 'Technologies',    icon: '⚡' },
+  { value: '2028', label: 'Graduating',    icon: '🎓' },
+];
+
+const quickSkills = ['React', 'Node.js', 'Spring Boot', 'MongoDB', 'Java', 'TypeScript'];
 
 const About = () => {
   return (
-    <section id="about" className="border-b border-[#223042] py-20 lg:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[280px_1fr] lg:items-center lg:px-8">
+    <section id="about" className="py-24 lg:py-32 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
+
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        {/* Header */}
         <Motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center lg:justify-start"
+          className="mb-14"
         >
-          <div className="relative h-64 w-64 rounded-full border border-[#31d7ff]/60 p-2 shadow-[0_0_0_1px_rgba(49,215,255,0.14),0_0_50px_rgba(49,215,255,0.1)]">
-            <div className="absolute inset-0 rounded-full border border-[#31d7ff]/20" />
-            <img
-              src={profileImg}
-              alt="Deneshkar Punyamoorthy"
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
+          <p className="section-label mb-3">About Me</p>
+          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-white leading-none">
+            Crafting Digital{' '}
+            <span className="text-gradient">Experiences</span>
+          </h2>
         </Motion.div>
 
-        <div>
-          <Motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-center">
+          {/* Left: photo + stats */}
+          <Motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-[#31d7ff]"
+            transition={{ duration: 0.7 }}
+            className="flex flex-col items-center lg:items-start gap-8"
           >
-            // 01. About Me
-          </Motion.p>
+            {/* Profile image with decorative rings */}
+            <div className="relative">
+              {/* Outer decorative rings */}
+              <div className="absolute -inset-4 rounded-full border border-violet-500/15 animate-rotate-slow" />
+              <div className="absolute -inset-8 rounded-full border border-fuchsia-500/8" style={{ animationDelay: '-5s' }} />
 
-          <Motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+              {/* Gradient ring */}
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-violet-500/40 via-fuchsia-500/30 to-sky-500/20 blur-sm" />
+
+              {/* Image */}
+              <div className="relative h-64 w-64 rounded-full overflow-hidden border-2 border-violet-500/30">
+                <img
+                  src={profileImg}
+                  alt="Deneshkar Punyamoorthy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              {/* Status badge */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#0e0920]/90 border border-violet-500/20 backdrop-blur-xl whitespace-nowrap shadow-lg">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                </span>
+                <span className="font-mono text-[10px] text-emerald-300 font-semibold">Open to Work</span>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3 w-full max-w-xs lg:max-w-none">
+              {stats.map(({ value, label, icon }) => (
+                <div
+                  key={label}
+                  className="group relative flex flex-col items-center gap-1.5 rounded-2xl border border-violet-500/10 bg-violet-500/5 px-3 py-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-500/30 hover:shadow-[0_8px_30px_rgba(124,58,237,0.15)]"
+                >
+                  {/* Top accent line */}
+                  <span className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />
+                  <span className="text-lg leading-none">{icon}</span>
+                  <p className="font-display text-2xl font-black text-gradient leading-none">{value}</p>
+                  <p className="w-full text-center font-mono text-[9px] uppercase tracking-[0.16em] text-[#a78bfa]/60 leading-tight">{label}</p>
+                </div>
+              ))}
+            </div>
+          </Motion.div>
+
+          {/* Right: text content */}
+          <Motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="mt-3 text-[clamp(2rem,5vw,3.4rem)] font-display font-black leading-none text-[#f5f8fc]"
+            transition={{ duration: 0.7 }}
+            className="space-y-6"
           >
-            The Path of Precision
-          </Motion.h2>
+            <p className="text-[16px] leading-8 text-[#a78bfa]/80">
+              I'm a <span className="text-violet-300 font-semibold">3rd-year BSc (Hons) IT student</span> at SLIIT,
+              passionate about building full-stack web applications that combine beautiful design with
+              solid engineering. I care deeply about developer experience, code quality, and creating
+              interfaces that feel deliberate and reliable.
+            </p>
 
-          <p className="mt-5 max-w-3xl text-[15px] leading-8 text-[#9fb0c6]">
-            I am a 3rd-year BSc (Hons) IT student at SLIIT, building full-stack web applications with a focus on clean user
-            experiences, strong foundations, and maintainable code. I enjoy turning ideas into interfaces that feel deliberate
-            and work reliably.
-          </p>
+            <p className="text-[16px] leading-8 text-[#a78bfa]/80">
+              Currently seeking <span className="text-fuchsia-300 font-semibold">internship opportunities</span> for 2026
+              where I can contribute to real-world projects, learn from experienced engineers, and keep
+              leveling up the systems I build.
+            </p>
 
-          <p className="mt-4 max-w-3xl text-[15px] leading-8 text-[#9fb0c6]">
-            Currently looking for internship opportunities where I can contribute, learn from experienced teams, and keep
-            improving the systems I build.
-          </p>
+            {/* Skills chips */}
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-violet-400/60 mb-3">Quick Skills</p>
+              <div className="flex flex-wrap gap-2">
+                {quickSkills.map((skill) => (
+                  <span key={skill} className="skill-badge">{skill}</span>
+                ))}
+              </div>
+            </div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-[#2d394a] bg-[#0d1521] px-3 py-1 text-xs text-[#c9d4e5]"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+            {/* CTA */}
+            <div className="pt-2">
+              <a href="#contact" data-cursor className="btn-primary inline-flex">
+                Let's Connect
+                <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </Motion.div>
         </div>
       </div>
     </section>

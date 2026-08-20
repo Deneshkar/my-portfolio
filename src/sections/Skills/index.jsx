@@ -3,85 +3,83 @@ import { motion as Motion } from 'framer-motion';
 const skillGroups = [
   {
     title: 'Frontend',
-    icon: '⌘',
+    icon: '⚛️',
     items: ['React', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS'],
   },
   {
     title: 'Backend',
-    icon: '◉',
+    icon: '⚡',
     items: ['Node.js', 'Express.js', 'Spring Boot'],
   },
   {
     title: 'Database',
-    icon: '◫',
+    icon: '🗄️',
     items: ['MongoDB', 'MySQL'],
   },
   {
-    title: 'Programming Languages',
-    icon: '◌',
-    items: ['Python', 'Java', 'C', 'C++'],
+    title: 'Languages',
+    icon: '💻',
+    items: ['Java', 'Python', 'C', 'C++'],
   },
   {
     title: 'Tools',
-    icon: '⌁',
-    items: ['Git & GitHub', 'Figma' , 'Postman', 'VS Code', 'IntelliJ IDEA' , 'Docker'],
+    icon: '🛠️',
+    items: ['Git & GitHub', 'Figma', 'Postman', 'Docker', 'VS Code', 'IntelliJ IDEA'],
   },
 ];
 
 const SkillCard = ({ title, icon, items, index }) => (
   <Motion.article
-    initial={{ opacity: 0, y: 18 }}
+    initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.35 }}
-    transition={{ duration: 0.5, delay: index * 0.06 }}
-    className="rounded-xl border border-[#223042] bg-[#0d1521] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.18)]"
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.5, delay: index * 0.07 }}
+    className="rounded-2xl border border-violet-500/10 bg-[#0e0920]/80 p-6"
   >
-    <div className="flex items-center gap-3 text-[#31d7ff]">
-      <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#31d7ff]/25 bg-[#08111d] text-lg">
-        {icon}
-      </div>
-      <h3 className="font-display text-2xl font-bold text-[#f5f8fc]">{title}</h3>
+    <div className="flex items-center gap-3 mb-4">
+      <span className="text-xl">{icon}</span>
+      <h3 className="font-display text-lg font-bold text-white">{title}</h3>
     </div>
 
-    <ul className="mt-5 space-y-3 text-sm leading-6 text-[#c9d4e5]">
+    <div className="flex flex-wrap gap-2">
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3">
-          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#31d7ff]" />
-          <span>{item}</span>
-        </li>
+        <span
+          key={item}
+          className="rounded-lg border border-violet-500/15 bg-violet-500/5 px-3 py-1.5 text-[12px] font-medium text-[#c4b5fd]/80"
+        >
+          {item}
+        </span>
       ))}
-    </ul>
+    </div>
   </Motion.article>
 );
 
 const Skills = () => {
   return (
-    <section id="skills" className="border-b border-[#223042] py-20 lg:py-24">
+    <section id="skills" className="py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <Motion.p
-          initial={{ opacity: 0, y: 10 }}
+
+        {/* Header */}
+        <Motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-[#31d7ff]"
+          className="mb-12"
         >
-          // 03. Expertise
-        </Motion.p>
+          <p className="section-label mb-3">Expertise</p>
+          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-white leading-none">
+            Technical{' '}
+            <span className="text-gradient-cool">Arsenal</span>
+          </h2>
+        </Motion.div>
 
-        <Motion.h2
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55 }}
-          className="mt-3 text-[clamp(2rem,5vw,3.4rem)] font-display font-black leading-none text-[#f5f8fc]"
-        >
-          Technical Arsenal
-        </Motion.h2>
-
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {skillGroups.map((group, index) => (
-            <SkillCard key={group.title} {...group} index={index} />
+        {/* Grid */}
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {skillGroups.map((group, i) => (
+            <SkillCard key={group.title} {...group} index={i} />
           ))}
         </div>
+
       </div>
     </section>
   );

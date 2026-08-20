@@ -22,6 +22,11 @@ const skillGroups = [
     items: ['Java', 'Python', 'C', 'C++'],
   },
   {
+    title: 'Mobile',
+    icon: '📱',
+    items: ['Flutter', 'Dart'],
+  },
+  {
     title: 'Tools',
     icon: '🛠️',
     items: ['Git & GitHub', 'Figma', 'Postman', 'Docker', 'VS Code', 'IntelliJ IDEA'],

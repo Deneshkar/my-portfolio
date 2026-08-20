@@ -7,7 +7,7 @@ const stats = [
   { value: '2028', label: 'Graduating',    icon: '🎓' },
 ];
 
-const quickSkills = ['React', 'Node.js', 'Spring Boot', 'MongoDB', 'Java', 'TypeScript'];
+const quickSkills = ['React', 'Node.js', 'Spring Boot', 'MongoDB', 'Java', 'TypeScript', 'Flutter'];
 
 const About = () => {
   return (

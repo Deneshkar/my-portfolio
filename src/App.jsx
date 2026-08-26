@@ -16,14 +16,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    const timer = setTimeout(() => setIsLoading(false), 4500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       {isLoading && <LoadingScreen />}
-      <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#05030f] text-[#ede9fe]">
+      <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#0a0806] text-[#f5e6c8]">
         {/* Global UI elements */}
         <CustomCursor />
         <ScrollProgress />

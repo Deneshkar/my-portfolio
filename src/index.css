@@ -4,25 +4,26 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────── */
 :root {
-  --bg:        #05030f;
-  --bg-card:   #0b0719;
-  --bg-card2:  #0e0920;
-  --cream:     #ede9fe;
-  --muted:     #a78bfa;
-  --muted2:    #818cf8;
+  --bg:        #0a0806;
+  --bg-card:   #1a1208;
+  --bg-card2:  #2a1a0a;
+  --cream:     #f5e6c8;
+  --muted:     #b89a6a;
+  --muted2:    #9a8050;
 
-  /* Accent palette - purple/violet/neon */
-  --violet:    #8b5cf6;
-  --indigo:    #6366f1;
-  --fuchsia:   #d946ef;
-  --sky:       #38bdf8;
-  --cyan:      #22d3ee;
-  --emerald:   #34d399;
-  --amber:     #fbbf24;
-  --pink:      #ec4899;
+  /* Accent palette - RDR2 Western */
+  --gold:      #c89b3c;
+  --gold-light:#e0c068;
+  --rust:      #8b2500;
+  --rust-light:#b33a00;
+  --sunset:    #d4763c;
+  --sunset-light:#e8944a;
+  --sage:      #5a7a3a;
+  --leather:   #2a1a0a;
+  --leather-light:#3d2814;
 
-  --font-sans:    'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-sans:    'Raleway', sans-serif;
+  --font-display: 'Cinzel Decorative', serif;
   --font-mono:    'JetBrains Mono', monospace;
 }
 
@@ -32,10 +33,10 @@
   top: 0; left: 0;
   height: 3px;
   width: 0%;
-  background: linear-gradient(90deg, var(--violet), var(--fuchsia), var(--sky));
+  background: linear-gradient(90deg, var(--gold), var(--rust), var(--sunset));
   z-index: 9999;
   transition: width 0.1s linear;
-  box-shadow: 0 0 12px rgba(139,92,246,0.8);
+  box-shadow: 0 0 12px rgba(200,155,60,0.8);
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
@@ -66,14 +67,14 @@
   }
 
   ::selection {
-    background: var(--violet);
-    color: #fff;
+    background: var(--gold);
+    color: #0a0806;
   }
 
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(var(--violet), var(--fuchsia));
+    background: linear-gradient(var(--gold), var(--rust));
     border-radius: 2px;
   }
 }
@@ -82,21 +83,21 @@
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background: var(--violet);
+  background: var(--gold);
   border-radius: 50%;
   position: fixed;
   top: 0; left: 0;
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 12px rgba(139,92,246,0.9);
+  box-shadow: 0 0 12px rgba(200,155,60,0.9);
   transition: width 0.2s, height 0.2s, background 0.2s;
 }
 
 .cursor-ring {
   width: 38px;
   height: 38px;
-  border: 1.5px solid rgba(139,92,246,0.45);
+  border: 1.5px solid rgba(200,155,60,0.45);
   border-radius: 50%;
   position: fixed;
   top: 0; left: 0;
@@ -109,45 +110,45 @@
 .cursor-ring.hovered {
   width: 64px;
   height: 64px;
-  border-color: var(--violet);
-  background: rgba(139,92,246,0.07);
+  border-color: var(--gold);
+  background: rgba(200,155,60,0.07);
 }
 
 /* ─── Gradients & Utilities ─────────────────────────────────── */
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, var(--violet) 0%, var(--fuchsia) 50%, var(--sky) 100%);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--rust) 50%, var(--sunset) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-warm {
-    background: linear-gradient(135deg, var(--amber) 0%, var(--pink) 50%, var(--violet) 100%);
+    background: linear-gradient(135deg, var(--sunset) 0%, var(--rust-light) 50%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-cool {
-    background: linear-gradient(135deg, var(--sky) 0%, var(--indigo) 50%, var(--fuchsia) 100%);
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--sunset) 50%, var(--rust) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glass {
-    background: rgba(14,9,32,0.72);
+    background: rgba(26,18,8,0.85);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(139,92,246,0.12);
+    border: 1px solid rgba(200,155,60,0.15);
   }
   .glass-card {
-    background: rgba(17,12,40,0.65);
+    background: rgba(42,26,10,0.75);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(139,92,246,0.1);
+    border: 1px solid rgba(200,155,60,0.12);
   }
-  .glow-violet { box-shadow: 0 0 30px rgba(139,92,246,0.2); }
-  .glow-fuchsia { box-shadow: 0 0 30px rgba(217,70,239,0.18); }
-  .glow-sky { box-shadow: 0 0 30px rgba(56,189,248,0.18); }
+  .glow-gold { box-shadow: 0 0 30px rgba(200,155,60,0.2); }
+  .glow-rust { box-shadow: 0 0 30px rgba(139,37,0,0.18); }
+  .glow-sunset { box-shadow: 0 0 30px rgba(212,118,60,0.18); }
 }
 
 /* ─── Animations ─────────────────────────────────────────────── */
@@ -175,11 +176,18 @@
   from { transform: translateX(120px) rotate(0deg); }
   to   { transform: translateX(120px) rotate(-360deg); }
 }
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.95; }
+  25%      { opacity: 0.98; }
+  75%      { opacity: 0.96; }
+}
 
 /* ─── Global Animation Classes ───────────────────────────────── */
 .animate-pulse-slow-delay { animation: pulse-slow-delay 8s ease-in-out 2s infinite; }
 .animate-float-y-rev      { animation: float-y-rev 6s ease-in-out infinite; }
 .animate-rotate-slow      { animation: rotate-slow 20s linear infinite; }
+.animate-flicker          { animation: flicker 4s ease-in-out infinite; }
 
 /* ─── Section Label ──────────────────────────────────────────── */
 .section-label {
@@ -191,21 +199,42 @@
   font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--violet);
+  color: var(--gold);
 }
 .section-label::before {
   content: '';
   display: inline-block;
   width: 20px;
   height: 1px;
-  background: var(--violet);
+  background: var(--gold);
   opacity: 0.7;
 }
 
 /* ─── Section Divider ────────────────────────────────────────── */
 .section-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(200,155,60,0.3), transparent);
+}
+
+/* ─── Western Ornament Divider ───────────────────────────────── */
+.western-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  opacity: 0.4;
+}
+.western-divider::before,
+.western-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.western-divider-icon {
+  color: var(--gold);
+  font-size: 1.2rem;
 }
 
 /* ─── Buttons ────────────────────────────────────────────────── */
@@ -215,8 +244,8 @@
   justify-content: center;
   gap: 0.5rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, var(--violet), var(--fuchsia));
-  color: #fff;
+  background: linear-gradient(135deg, var(--gold), var(--rust));
+  color: #0a0806;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
@@ -225,11 +254,11 @@
   text-transform: uppercase;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: none;
-  box-shadow: 0 4px 24px rgba(139,92,246,0.35);
+  box-shadow: 0 4px 24px rgba(200,155,60,0.35);
 }
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(139,92,246,0.55), 0 0 60px rgba(217,70,239,0.25);
+  box-shadow: 0 12px 40px rgba(200,155,60,0.55), 0 0 60px rgba(139,37,0,0.25);
 }
 
 .btn-secondary {
@@ -239,7 +268,7 @@
   gap: 0.5rem;
   border-radius: 9999px;
   background: transparent;
-  border: 1px solid rgba(139,92,246,0.4);
+  border: 1px solid rgba(200,155,60,0.4);
   color: var(--cream);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -251,10 +280,10 @@
   cursor: none;
 }
 .btn-secondary:hover {
-  border-color: var(--violet);
-  color: var(--violet);
+  border-color: var(--gold);
+  color: var(--gold);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(139,92,246,0.25);
+  box-shadow: 0 8px 30px rgba(200,155,60,0.25);
 }
 
 /* ─── Skill Badge ─────────────────────────────────────────────── */
@@ -267,18 +296,18 @@
   font-size: 11px;
   font-family: var(--font-mono);
   font-weight: 600;
-  background: rgba(139,92,246,0.1);
-  border: 1px solid rgba(139,92,246,0.2);
-  color: #c4b5fd;
+  background: rgba(200,155,60,0.1);
+  border: 1px solid rgba(200,155,60,0.2);
+  color: #e0c068;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
 .skill-badge:hover {
-  background: rgba(139,92,246,0.2);
-  border-color: rgba(139,92,246,0.5);
+  background: rgba(200,155,60,0.2);
+  border-color: rgba(200,155,60,0.5);
   transform: translateY(-2px);
 }
 
-/* ─── Glitch ─────────────────────────────────────────────────── */
+/* ─── Glitch (Western warm variant) ──────────────────────────── */
 .glitch { position: relative; }
 .glitch::before, .glitch::after {
   content: attr(data-text);
@@ -287,13 +316,13 @@
   width: 100%; height: 100%;
 }
 .glitch::before {
-  color: var(--fuchsia);
+  color: var(--rust);
   clip: rect(24px, 2000px, 90px, 0);
   transform: skewX(-2deg);
   animation: glitch-anim-1 5s infinite linear alternate-reverse;
 }
 .glitch::after {
-  color: var(--sky);
+  color: var(--sunset);
   clip: rect(85px, 2000px, 140px, 0);
   transform: skewX(1deg);
   animation: glitch-anim-2 4s infinite linear alternate-reverse;
@@ -319,7 +348,7 @@
 .type-cursor::after {
   content: '|';
   animation: blink 1s step-end infinite;
-  color: var(--violet);
+  color: var(--gold);
   margin-left: 2px;
 }
 
@@ -330,4 +359,17 @@
 }
 .animate-orbit {
   animation: orbit var(--dur, 8s) linear infinite;
+}
+
+/* ─── Film Grain Overlay ─────────────────────────────────────── */
+.film-grain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 99997;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }

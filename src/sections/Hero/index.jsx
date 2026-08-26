@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 const ROLES = ['MERN Stack Developer', 'Frontend Engineer', 'Problem Solver', 'Full-Stack Builder'];
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
 
-// Animated orbit tech icons
 const TECH_ICONS = ['⚛', '🟢', '🍃', '☕', '🐳', '⚡'];
 
 const Hero = () => {
@@ -13,7 +12,6 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const containerRef = useRef(null);
 
-  // Typewriter effect with backspace
   useEffect(() => {
     const activeRole = ROLES[roleIndex];
     let timer;
@@ -34,7 +32,6 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [roleIndex, typedRole, isDeleting]);
 
-  // Mouse parallax
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -65,24 +62,22 @@ const Hero = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12"
     >
-      {/* Hero-specific glow */}
+      {/* Hero-specific warm glow */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(139,92,246,0.12) 0%, rgba(217,70,239,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(200,155,60,0.10) 0%, rgba(139,37,0,0.05) 40%, transparent 70%)',
           transform: `translate(calc(-50% + calc(var(--px, 0) * 18px)), calc(-50% + calc(var(--py, 0) * 18px)))`,
         }}
       />
 
-      {/* Orbiting decorative ring */}
+      {/* Orbiting decorative ring - Western style */}
       <div className="absolute top-1/2 right-[8%] -translate-y-1/2 hidden lg:block pointer-events-none">
         <div className="relative w-[420px] h-[420px]">
-          {/* Rings */}
-          <div className="absolute inset-0 rounded-full border border-violet-500/10" />
-          <div className="absolute inset-[15%] rounded-full border border-fuchsia-500/8" />
-          <div className="absolute inset-[30%] rounded-full border border-violet-400/10" />
+          <div className="absolute inset-0 rounded-full border border-amber-700/10" />
+          <div className="absolute inset-[15%] rounded-full border border-red-800/8" />
+          <div className="absolute inset-[30%] rounded-full border border-orange-700/10" />
 
-          {/* Orbiting dots */}
           {TECH_ICONS.map((icon, i) => (
             <div
               key={i}
@@ -92,14 +87,13 @@ const Hero = () => {
                 '--radius': `${170 - i * 15}px`,
               }}
             >
-              <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-[#0e0920]/80 border border-violet-500/20 shadow-lg shadow-violet-900/40 backdrop-blur-sm">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-[#1a1208]/80 border border-amber-700/20 shadow-lg shadow-amber-900/40 backdrop-blur-sm">
                 {icon}
               </div>
             </div>
           ))}
 
-          {/* Center avatar placeholder */}
-          <div className="absolute inset-[38%] rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center text-white font-display font-black text-2xl shadow-2xl shadow-violet-500/40">
+          <div className="absolute inset-[32%] rounded-full bg-gradient-to-br from-amber-600 to-red-700 flex items-center justify-center text-parchment font-display font-black text-3xl shadow-2xl shadow-amber-600/40 z-20 ring-4 ring-[#1a1208]/80">
             D
           </div>
         </div>
@@ -113,19 +107,17 @@ const Hero = () => {
           animate="show"
           className="max-w-3xl"
         >
-          {/* Top label */}
           <Motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-            <span className="relative flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]">
-              <span className="animate-ping absolute inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative flex h-2.5 w-2.5 rounded-full bg-sage shadow-[0_0_10px_rgba(90,122,58,0.8)]">
+              <span className="animate-ping absolute inline-flex h-2.5 w-2.5 rounded-full bg-sage opacity-75" />
             </span>
-            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-emerald-400">
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em] text-sage">
               Available for internship · 2026
             </span>
           </Motion.div>
 
-          {/* Main heading */}
           <Motion.div variants={fadeUp}>
-            <h1 className="font-display font-black leading-[0.9] text-[clamp(3.2rem,9vw,7rem)] text-white">
+            <h1 className="font-display font-black leading-[0.9] text-[clamp(3.2rem,9vw,7rem)] text-parchment">
               Hi, I'm{' '}
               <span
                 className="inline-block text-gradient"
@@ -136,29 +128,26 @@ const Hero = () => {
             </h1>
           </Motion.div>
 
-          {/* Role typewriter */}
           <Motion.div
             variants={fadeUp}
             className="mt-6 flex items-center gap-3"
           >
-            <div className="h-px w-8 bg-gradient-to-r from-violet-500 to-transparent" />
-            <span className="font-display text-[clamp(1.1rem,2.5vw,1.7rem)] font-semibold text-[#c4b5fd]">
+            <div className="h-px w-8 bg-gradient-to-r from-gold to-transparent" />
+            <span className="font-display text-[clamp(1.1rem,2.5vw,1.7rem)] font-semibold text-muted">
               {typedRole}
-              <span className="inline-block w-[2px] h-[1.1em] bg-violet-400 ml-1 align-middle animate-blink" />
+              <span className="inline-block w-[2px] h-[1.1em] bg-gold ml-1 align-middle animate-blink" />
             </span>
           </Motion.div>
 
-          {/* Description */}
           <Motion.p
             variants={fadeUp}
-            className="mt-7 max-w-xl text-[15px] leading-8 text-[#a78bfa]/80"
+            className="mt-7 max-w-xl text-[15px] leading-8 text-muted/80"
           >
-            I craft <span className="text-violet-300 font-semibold">clean, performant</span> web experiences
+            I craft <span className="text-gold-light font-semibold">clean, performant</span> web experiences
             with React, Node.js, MongoDB, and Spring Boot. Passionate about turning ideas into polished,
-            reliable applications that <span className="text-fuchsia-300 font-semibold">feel great</span> to use.
+            reliable applications that <span className="text-sunset-light font-semibold">feel great</span> to use.
           </Motion.p>
 
-          {/* CTA buttons */}
           <Motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-4">
             <a href="#projects" data-cursor className="btn-primary">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -175,7 +164,6 @@ const Hero = () => {
             </a>
           </Motion.div>
 
-          {/* Social links */}
           <Motion.div variants={fadeUp} className="mt-10 flex items-center gap-5">
             {[
               { label: 'GitHub',   href: 'https://github.com/Deneshkar',   icon: 'GH' },
@@ -187,59 +175,67 @@ const Hero = () => {
                 target="_blank"
                 rel="noreferrer"
                 data-cursor
-                className="group flex items-center gap-2.5 text-[#7c3aed]/70 hover:text-violet-300 transition-colors text-sm"
+                className="group flex items-center gap-2.5 text-muted/60 hover:text-gold-light transition-colors text-sm"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-violet-500/20 bg-violet-500/5 font-mono text-[10px] font-bold group-hover:border-violet-500/40 group-hover:bg-violet-500/10 transition-all">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-amber-700/20 bg-amber-700/5 font-mono text-[10px] font-bold group-hover:border-amber-700/40 group-hover:bg-amber-700/10 transition-all">
                   {icon}
                 </span>
                 {label}
               </a>
             ))}
-            <span className="h-px w-12 bg-gradient-to-r from-violet-500/40 to-transparent" />
+            <span className="h-px w-12 bg-gradient-to-r from-amber-700/40 to-transparent" />
           </Motion.div>
         </Motion.div>
 
-        {/* Code card (desktop) */}
+        {/* Developer Profile Card (desktop) */}
         <Motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-10 right-6 lg:right-[3%] hidden lg:block"
         >
-          <div className="relative w-[320px] rounded-2xl border border-violet-500/15 bg-[#0e0920]/90 backdrop-blur-xl shadow-2xl shadow-violet-900/30 overflow-hidden">
-            {/* title bar */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-violet-500/10 bg-[#110c28]/60">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-              <span className="ml-2 font-mono text-[10px] text-violet-400/50">developer.js</span>
+          <div className="relative w-[320px] rounded-2xl border border-amber-700/20 bg-[#1a1208]/90 backdrop-blur-xl shadow-2xl shadow-amber-900/30 overflow-hidden">
+            {/* Top accent bar */}
+            <div className="h-[3px] bg-gradient-to-r from-gold via-rust to-sunset" />
+
+            <div className="p-6">
+              {/* Profile row */}
+              <div className="flex items-center gap-4 mb-5">
+                <div className="relative">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-600 to-red-700 flex items-center justify-center text-parchment font-display font-black text-xl shadow-lg shadow-amber-600/30 ring-2 ring-amber-700/30">
+                    D
+                  </div>
+                  <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full bg-sage border-2 border-[#1a1208]" />
+                </div>
+                <div>
+                  <p className="font-display text-sm font-bold text-parchment">Deneshkar</p>
+                  <p className="font-mono text-[10px] text-muted/60 uppercase tracking-wider">Software Engineer</p>
+                </div>
+              </div>
+
+              {/* Tech stack badges */}
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {['React', 'Node.js', 'MongoDB', 'Spring Boot'].map((tech) => (
+                  <span key={tech} className="px-2.5 py-1 rounded-md bg-amber-700/10 border border-amber-700/15 font-mono text-[9px] font-semibold text-gold-light uppercase tracking-wider">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { label: 'Projects', value: '5+' },
+                  { label: 'Stack', value: 'MERN' },
+                  { label: 'Status', value: 'OPEN' },
+                ].map(({ label, value }) => (
+                  <div key={label} className="text-center">
+                    <p className="font-display text-lg font-black text-gradient leading-none">{value}</p>
+                    <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-muted/50 mt-1">{label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <pre className="p-5 text-[12px] leading-6 font-mono">
-              <span className="text-[#c084fc]">const</span>
-              <span className="text-white"> developer </span>
-              <span className="text-[#f472b6]">=</span>
-              <span className="text-white"> {'{'}</span>{'\n'}
-              <span className="text-[#67e8f9]">  name</span>
-              <span className="text-white">: </span>
-              <span className="text-[#86efac]">'Deneshkar'</span>
-              <span className="text-white">,</span>{'\n'}
-              <span className="text-[#67e8f9]">  stack</span>
-              <span className="text-white">: </span>
-              <span className="text-[#86efac]">['MERN', 'Spring Boot']</span>
-              <span className="text-white">,</span>{'\n'}
-              <span className="text-[#67e8f9]">  open</span>
-              <span className="text-white">: </span>
-              <span className="text-[#a5b4fc]">true</span>
-              <span className="text-white">,</span>{'\n'}
-              <span className="text-[#67e8f9]">  coffee</span>
-              <span className="text-white">: </span>
-              <span className="text-[#a5b4fc]">Infinity</span>
-              <span className="text-white">,</span>{'\n'}
-              <span className="text-white">{'}'}</span>
-              <span className="text-[#f472b6]">;</span>
-            </pre>
-            {/* bottom glow */}
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-500 via-fuchsia-500 to-sky-500" />
           </div>
         </Motion.div>
 
@@ -250,8 +246,8 @@ const Hero = () => {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
         >
-          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-violet-400/40">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-violet-500/40 to-transparent" />
+          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-gold/40">Scroll</span>
+          <div className="w-px h-12 bg-gradient-to-b from-gold/40 to-transparent" />
         </Motion.div>
       </div>
     </section>

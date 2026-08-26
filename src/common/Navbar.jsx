@@ -30,17 +30,17 @@ const Navbar = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'py-3 bg-[#070412]/90 backdrop-blur-2xl border-b border-violet-500/10'
+            ? 'py-3 bg-[#0a0806]/90 backdrop-blur-2xl border-b border-amber-700/10'
             : 'py-5 bg-transparent'
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 lg:px-8">
           {/* Logo */}
           <a href="#" className="group flex items-center gap-2" data-cursor>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/30 text-white font-bold text-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-violet-500/50">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-600 to-red-700 shadow-lg shadow-amber-600/30 text-parchment font-bold text-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-amber-600/50">
               D
             </div>
-            <span className="font-display text-lg font-bold text-white tracking-tight">
+            <span className="font-display text-lg font-bold text-parchment tracking-tight">
               eneshkar
             </span>
           </a>
@@ -55,15 +55,15 @@ const Navbar = () => {
                 onClick={() => setActive(href)}
                 className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-all duration-300 rounded-full ${
                   active === href
-                    ? 'text-violet-300'
-                    : 'text-[#c4b5fd]/70 hover:text-violet-300'
+                    ? 'text-amber-400'
+                    : 'text-parchment/60 hover:text-amber-400'
                 }`}
               >
                 <span className="relative z-10">{label}</span>
                 {active === href && (
                   <Motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-violet-500/15 border border-violet-500/20"
+                    className="absolute inset-0 rounded-full bg-amber-700/15 border border-amber-700/20"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -88,12 +88,12 @@ const Navbar = () => {
             id="mobile-menu-toggle"
             onClick={() => setIsOpen(!isOpen)}
             data-cursor
-            className="md:hidden relative flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-lg border border-violet-500/20 bg-violet-500/5"
+            className="md:hidden relative flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-lg border border-amber-700/20 bg-amber-700/5"
             aria-label="Toggle menu"
           >
-            <span className={`block h-px w-5 bg-violet-300 transition-all duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''}`} />
-            <span className={`block h-px w-5 bg-violet-300 transition-all duration-300 ${isOpen ? 'opacity-0 translate-x-2' : ''}`} />
-            <span className={`block h-px w-5 bg-violet-300 transition-all duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : ''}`} />
+            <span className={`block h-px w-5 bg-amber-500 transition-all duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : ''}`} />
+            <span className={`block h-px w-5 bg-amber-500 transition-all duration-300 ${isOpen ? 'opacity-0 translate-x-2' : ''}`} />
+            <span className={`block h-px w-5 bg-amber-500 transition-all duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : ''}`} />
           </button>
         </div>
       </Motion.nav>
@@ -107,10 +107,10 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 md:hidden"
-            style={{ background: 'rgba(7,4,18,0.97)', backdropFilter: 'blur(24px)' }}
+            style={{ background: 'rgba(10,8,6,0.97)', backdropFilter: 'blur(24px)' }}
           >
             {/* Decorative glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-violet-600/15 blur-[80px]" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-amber-700/15 blur-[80px]" />
 
             <div className="flex flex-col items-center justify-center h-full gap-6">
               {navLinks.map(({ href, label }, i) => (
@@ -121,7 +121,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.07 }}
                   onClick={() => setIsOpen(false)}
-                  className="font-display text-4xl font-black text-white/80 transition-colors hover:text-violet-300"
+                  className="font-display text-4xl font-black text-parchment/80 transition-colors hover:text-amber-400"
                 >
                   {label}
                 </Motion.a>

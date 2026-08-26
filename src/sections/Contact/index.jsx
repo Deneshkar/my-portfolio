@@ -81,20 +81,18 @@ const Contact = () => {
   };
 
   const inputBase = (field) =>
-    `w-full rounded-xl border bg-[#070412]/60 px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder:text-[#6b21a8]/50 ${
+    `w-full rounded-xl border bg-[#0a0806]/60 px-4 py-3.5 text-sm text-parchment outline-none transition-all duration-300 placeholder:text-muted/30 ${
       errors[field]
         ? 'border-red-500/50 focus:border-red-500/80 focus:shadow-[0_0_0_3px_rgba(239,68,68,0.1)]'
-        : 'border-violet-500/15 focus:border-violet-500/50 focus:shadow-[0_0_0_3px_rgba(139,92,246,0.12)]'
+        : 'border-amber-700/15 focus:border-gold/50 focus:shadow-[0_0_0_3px_rgba(200,155,60,0.12)]'
     }`;
 
   return (
     <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] rounded-full bg-fuchsia-600/6 blur-[120px] pointer-events-none" />
-      <div className="absolute right-0 top-0 w-[400px] h-[400px] rounded-full bg-violet-600/5 blur-[100px] pointer-events-none" />
+      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] rounded-full bg-red-950/6 blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 top-0 w-[400px] h-[400px] rounded-full bg-amber-900/5 blur-[100px] pointer-events-none" />
 
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        {/* Header */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,18 +100,17 @@ const Contact = () => {
           className="mb-14 text-center"
         >
           <p className="section-label mb-3 justify-center">Contact</p>
-          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-white leading-none">
+          <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-parchment leading-none">
             Let's{' '}
             <span className="text-gradient">Build Together</span>
           </h2>
-          <p className="mt-4 mx-auto max-w-xl text-[15px] text-[#a78bfa]/60 leading-7">
+          <p className="mt-4 mx-auto max-w-xl text-[15px] text-muted/60 leading-7">
             Open to internship opportunities for 2026. Got a project or just want to chat?
             Drop me a message — I'd love to hear from you.
           </p>
         </Motion.div>
 
         <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 items-start">
-          {/* Left: contact info */}
           <Motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -133,54 +130,51 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ x: 4 }}
-                className="group flex items-center gap-4 rounded-2xl border border-violet-500/10 bg-[#0e0920]/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-violet-500/25 hover:bg-violet-500/5"
+                className="group flex items-center gap-4 rounded-2xl border border-amber-700/10 bg-[#1a1208]/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-gold/25 hover:bg-amber-700/5"
               >
-                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-violet-500/15 bg-violet-500/8 text-xl transition-all duration-300 group-hover:border-violet-500/30 group-hover:scale-105">
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-amber-700/15 bg-amber-700/8 text-xl transition-all duration-300 group-hover:border-gold/30 group-hover:scale-105">
                   {icon}
                 </div>
                 <div className="min-w-0">
-                  <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-violet-400/50">{label}</p>
-                  <p className="mt-0.5 text-sm font-medium text-[#c4b5fd] truncate">{value}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted/50">{label}</p>
+                  <p className="mt-0.5 text-sm font-medium text-muted truncate">{value}</p>
                 </div>
-                <svg className="ml-auto w-4 h-4 text-violet-500/30 group-hover:text-violet-400 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="ml-auto w-4 h-4 text-amber-700/30 group-hover:text-gold transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Motion.a>
             ))}
 
-            {/* Availability card */}
             <Motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="rounded-2xl border border-emerald-500/15 bg-emerald-500/5 p-5 flex items-center gap-3"
+              className="rounded-2xl border border-sage/15 bg-sage/5 p-5 flex items-center gap-3"
             >
               <span className="relative flex h-3 w-3 flex-shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-sage" />
               </span>
-              <p className="text-sm text-emerald-300/80">
-                <span className="font-semibold text-emerald-300">Available</span> for internship roles starting 2026
+              <p className="text-sm text-sage/80">
+                <span className="font-semibold text-sage">Available</span> for internship roles starting 2026
               </p>
             </Motion.div>
           </Motion.div>
 
-          {/* Right: form */}
           <Motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="rounded-3xl border border-violet-500/10 bg-[#0e0920]/80 p-6 lg:p-8 backdrop-blur-xl shadow-2xl shadow-violet-900/20 relative overflow-hidden"
+            className="rounded-3xl border border-amber-700/10 bg-[#1a1208]/80 p-6 lg:p-8 backdrop-blur-xl shadow-2xl shadow-amber-900/20 relative overflow-hidden"
           >
-            {/* Form top glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-violet-500/10 blur-2xl" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-20 bg-gold/10 blur-2xl" />
 
             <div className="relative grid gap-4 md:grid-cols-2">
               <label className="block">
-                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.3em] text-violet-400/60">Your Name</span>
+                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.3em] text-muted/60">Your Name</span>
                 <input
                   type="text"
                   name="name"
@@ -194,7 +188,7 @@ const Contact = () => {
               </label>
 
               <label className="block">
-                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.3em] text-violet-400/60">Email Address</span>
+                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.3em] text-muted/60">Email Address</span>
                 <input
                   type="email"
                   name="email"
@@ -210,7 +204,7 @@ const Contact = () => {
 
             <div className="relative mt-4">
               <label className="block">
-                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.3em] text-violet-400/60">Message</span>
+                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.3em] text-muted/60">Message</span>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -233,7 +227,7 @@ const Contact = () => {
                   transition={{ duration: 0.3 }}
                   className={`mt-4 rounded-xl border p-4 text-sm ${
                     status === 'success'
-                      ? 'border-emerald-500/25 bg-emerald-500/8 text-emerald-300'
+                      ? 'border-sage/25 bg-sage/8 text-sage'
                       : 'border-red-500/25 bg-red-500/8 text-red-300'
                   }`}
                 >

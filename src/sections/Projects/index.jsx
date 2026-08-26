@@ -4,8 +4,8 @@ const projects = [
   {
     index: '01',
     label: 'Full-Stack · MERN',
-    accentFrom: '#8b5cf6',
-    accentTo: '#d946ef',
+    accentFrom: '#c89b3c',
+    accentTo: '#8b2500',
     title: 'Food Order App',
     desc: 'A modern food ordering platform with a separate frontend & backend, featuring real-time cart management, JWT auth, and a clean UI.',
     tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT'],
@@ -17,8 +17,8 @@ const projects = [
   {
     index: '02',
     label: 'Java · Backend',
-    accentFrom: '#6366f1',
-    accentTo: '#38bdf8',
+    accentFrom: '#d4763c',
+    accentTo: '#c89b3c',
     title: 'Library Management',
     desc: 'A Spring Boot library system for managing books, borrowers, issuing, returns, and admin tasks with a clean dashboard.',
     tech: ['Java', 'Spring Boot', 'Thymeleaf', 'MySQL'],
@@ -29,8 +29,8 @@ const projects = [
   {
     index: '03',
     label: 'Full-Stack · Java',
-    accentFrom: '#f59e0b',
-    accentTo: '#ec4899',
+    accentFrom: '#b33a00',
+    accentTo: '#c89b3c',
     title: 'Bakery Management',
     desc: 'A complete bakery management system for handling orders, inventory tracking, and sales reporting with a daily workflow.',
     tech: ['Java', 'Spring Boot', 'Inventory', 'Sales Tracking'],
@@ -41,8 +41,8 @@ const projects = [
   {
     index: '04',
     label: 'Full-Stack · MERN',
-    accentFrom: '#34d399',
-    accentTo: '#6366f1',
+    accentFrom: '#5a7a3a',
+    accentTo: '#c89b3c',
     title: 'Rice Mill System',
     desc: 'A rice mill management platform with separate frontend & backend repos for managing operations, records, and workflow.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
@@ -54,8 +54,8 @@ const projects = [
   {
     index: '05',
     label: 'Mobile App · Flutter',
-    accentFrom: '#22d3ee',
-    accentTo: '#818cf8',
+    accentFrom: '#e0c068',
+    accentTo: '#d4763c',
     title: 'Monthly Expense Tracker',
     desc: 'A Flutter app for effortless personal finance management — track monthly spending, set budget goals, manage loans, analyze expenses with pie charts, and export detailed PDF reports.',
     tech: ['Flutter', 'Dart', 'SQLite'],
@@ -73,31 +73,26 @@ const ProjectCard = ({ project, index: cardIndex }) => (
     viewport={{ once: true, amount: 0.25 }}
     transition={{ duration: 0.6, delay: cardIndex * 0.08 }}
     whileHover={{ y: -6, transition: { duration: 0.3 } }}
-    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-violet-500/10 bg-[#0e0920]/80 backdrop-blur-sm shadow-xl"
+    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-amber-700/10 bg-[#1a1208]/80 backdrop-blur-sm shadow-xl"
   >
-    {/* Top gradient bar */}
     <div
       className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-300 group-hover:opacity-100 opacity-60"
       style={{ background: `linear-gradient(90deg, ${project.accentFrom}, ${project.accentTo})` }}
     />
 
-    {/* Card header */}
     <div className="relative p-6 pb-4">
-      {/* Number watermark */}
-      <span className="absolute top-4 right-5 font-display font-black text-7xl text-white/4 leading-none select-none">
+      <span className="absolute top-4 right-5 font-display font-black text-7xl text-parchment/4 leading-none select-none">
         {project.index}
       </span>
 
       <div className="flex items-center gap-3">
-        {/* Icon */}
         <div
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl border border-violet-500/15 bg-violet-500/8 shadow-lg transition-all duration-300 group-hover:scale-110"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl border border-amber-700/15 bg-amber-700/8 shadow-lg transition-all duration-300 group-hover:scale-110"
           style={{ boxShadow: `0 8px 30px ${project.accentFrom}25` }}
         >
           {project.icon}
         </div>
 
-        {/* Label badge */}
         <span
           className="rounded-full px-2.5 py-1 text-[9px] font-mono font-bold uppercase tracking-[0.25em] border whitespace-nowrap overflow-hidden"
           style={{
@@ -110,32 +105,28 @@ const ProjectCard = ({ project, index: cardIndex }) => (
         </span>
       </div>
 
-      <h3 className="mt-4 text-[1.25rem] font-display font-bold text-white leading-tight group-hover:text-gradient transition-all duration-300">
+      <h3 className="mt-4 text-[1.25rem] font-display font-bold text-parchment leading-tight group-hover:text-gradient transition-all duration-300">
         {project.title}
       </h3>
-      <p className="mt-2 text-[13px] leading-6 text-[#a78bfa]/65">
+      <p className="mt-2 text-[13px] leading-6 text-muted/65">
         {project.desc}
       </p>
     </div>
 
-    {/* Tech + footer block — bottom-anchored so every card's footer lines up */}
     <div className="mt-auto flex flex-col">
-      {/* Tech tags */}
       <div className="px-6 flex flex-wrap gap-1.5">
       {project.tech.map((tech) => (
         <span
           key={tech}
-          className="rounded-full border border-violet-500/15 bg-violet-500/5 px-2.5 py-0.5 text-[10px] font-mono text-[#c4b5fd]/60"
+          className="rounded-full border border-amber-700/15 bg-amber-700/5 px-2.5 py-0.5 text-[10px] font-mono text-muted/60"
         >
           {tech}
         </span>
       ))}
     </div>
 
-    {/* Divider */}
-    <div className="mx-6 h-px bg-gradient-to-r from-transparent via-violet-500/15 to-transparent" />
+    <div className="mx-6 h-px bg-gradient-to-r from-transparent via-amber-700/15 to-transparent" />
 
-    {/* Links */}
     <div className="p-5">
       {project.type === 'split' ? (
         <div className="grid grid-cols-2 gap-2">
@@ -144,7 +135,7 @@ const ProjectCard = ({ project, index: cardIndex }) => (
             target="_blank"
             rel="noreferrer"
             data-cursor
-            className="flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[11px] font-mono font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[11px] font-mono font-bold text-[#0a0806] transition-all duration-300 hover:-translate-y-0.5"
             style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})`, boxShadow: `0 4px 20px ${project.accentFrom}35` }}
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -157,7 +148,7 @@ const ProjectCard = ({ project, index: cardIndex }) => (
             target="_blank"
             rel="noreferrer"
             data-cursor
-            className="flex items-center justify-center gap-1.5 rounded-xl border border-violet-500/20 bg-violet-500/5 py-2.5 text-[11px] font-mono font-bold text-[#c4b5fd] transition-all duration-300 hover:border-violet-500/40 hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-1.5 rounded-xl border border-amber-700/20 bg-amber-700/5 py-2.5 text-[11px] font-mono font-bold text-muted transition-all duration-300 hover:border-amber-700/40 hover:-translate-y-0.5"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
@@ -172,7 +163,7 @@ const ProjectCard = ({ project, index: cardIndex }) => (
             target="_blank"
             rel="noreferrer"
             data-cursor
-            className="flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[11px] font-mono font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[11px] font-mono font-bold text-[#0a0806] transition-all duration-300 hover:-translate-y-0.5"
             style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})`, boxShadow: `0 4px 20px ${project.accentFrom}35` }}
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -185,7 +176,7 @@ const ProjectCard = ({ project, index: cardIndex }) => (
             target="_blank"
             rel="noreferrer"
             data-cursor
-            className="flex items-center justify-center gap-1.5 rounded-xl border border-violet-500/20 bg-violet-500/5 py-2.5 text-[11px] font-mono font-bold text-[#c4b5fd] transition-all duration-300 hover:border-violet-500/40 hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-1.5 rounded-xl border border-amber-700/20 bg-amber-700/5 py-2.5 text-[11px] font-mono font-bold text-muted transition-all duration-300 hover:border-amber-700/40 hover:-translate-y-0.5"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-4-4 4M6 16l-4-4 4-4" />
@@ -199,7 +190,7 @@ const ProjectCard = ({ project, index: cardIndex }) => (
           target="_blank"
           rel="noreferrer"
           data-cursor
-          className="flex items-center justify-center gap-2 w-full rounded-xl py-2.5 text-[11px] font-mono font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+          className="flex items-center justify-center gap-2 w-full rounded-xl py-2.5 text-[11px] font-mono font-bold text-[#0a0806] transition-all duration-300 hover:-translate-y-0.5"
           style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})`, boxShadow: `0 4px 20px ${project.accentFrom}35` }}
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -216,11 +207,9 @@ const ProjectCard = ({ project, index: cardIndex }) => (
 const Projects = () => {
   return (
     <section id="projects" className="py-24 lg:py-32 relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute left-0 top-1/3 w-[400px] h-[400px] rounded-full bg-fuchsia-600/5 blur-[120px] pointer-events-none" />
+      <div className="absolute left-0 top-1/3 w-[400px] h-[400px] rounded-full bg-red-950/5 blur-[120px] pointer-events-none" />
 
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        {/* Header */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -229,12 +218,12 @@ const Projects = () => {
         >
           <div>
             <p className="section-label mb-3">Portfolio</p>
-            <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-white leading-none">
+            <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-parchment leading-none">
               Selected{' '}
               <span className="text-gradient-warm">Work</span>
             </h2>
           </div>
-          <p className="text-sm text-[#a78bfa]/60 max-w-sm">
+          <p className="text-sm text-muted/60 max-w-sm">
             Projects built from scratch — each one solving a real problem with clean code and thoughtful design.
           </p>
         </Motion.div>
@@ -245,7 +234,6 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* GitHub CTA */}
         <Motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

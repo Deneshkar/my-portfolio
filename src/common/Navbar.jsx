@@ -36,12 +36,9 @@ const Navbar = () => {
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 lg:px-8">
           {/* Logo */}
-          <a href="#" className="group flex items-center gap-2" data-cursor>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-600 to-red-700 shadow-lg shadow-amber-600/30 text-parchment font-bold text-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-amber-600/50">
-              D
-            </div>
-            <span className="font-display text-lg font-bold text-parchment tracking-tight">
-              eneshkar
+          <a href="#" className="group flex items-center" data-cursor>
+            <span className="font-display text-lg font-bold tracking-tight">
+              <span className="text-parchment">Deneshkar</span>
             </span>
           </a>
 
@@ -56,7 +53,7 @@ const Navbar = () => {
                 className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-all duration-300 rounded-full ${
                   active === href
                     ? 'text-amber-400'
-                    : 'text-parchment/60 hover:text-amber-400'
+                    : 'text-parchment/60 hover:text-amber-600'
                 }`}
               >
                 <span className="relative z-10">{label}</span>

@@ -6,12 +6,9 @@ const Footer = () => {
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <a href="#" className="group flex items-center gap-2" data-cursor>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-600 to-red-700 text-parchment font-bold text-sm shadow-lg shadow-amber-600/25 transition-all group-hover:scale-110">
-              D
-            </div>
-            <span className="font-display text-base font-bold text-parchment/70 group-hover:text-parchment transition-colors">
-              Deneshkar
+          <a href="#" className="group flex items-center" data-cursor>
+            <span className="font-display text-base font-bold tracking-tight transition-colors">
+              <span className="text-parchment/70 group-hover:text-parchment">Deneshkar</span>
             </span>
           </a>
 

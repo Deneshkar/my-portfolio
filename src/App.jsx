@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react';
 import Navbar from './common/Navbar.jsx';
 import TechBackground from './common/TechBackground.jsx';
 import CustomCursor from './common/CustomCursor.jsx';
 import ScrollProgress from './common/ScrollProgress.jsx';
+import LoadingScreen from './common/LoadingScreen.jsx';
 import Hero from './sections/Hero/index.jsx';
 import About from './sections/About/index.jsx';
 import Skills from './sections/Skills/index.jsx';
@@ -11,25 +13,35 @@ import Contact from './sections/Contact/index.jsx';
 import Footer from './sections/Footer/index.jsx';
 
 function App() {
-  return (
-    <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#05030f] text-[#ede9fe]">
-      {/* Global UI elements */}
-      <CustomCursor />
-      <ScrollProgress />
-      <TechBackground />
+  const [isLoading, setIsLoading] = useState(true);
 
-      {/* Page content */}
-      <div className="relative z-10 w-full">
-        <Navbar />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Education />
-        <Contact />
-        <Footer />
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      {isLoading && <LoadingScreen />}
+      <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#05030f] text-[#ede9fe]">
+        {/* Global UI elements */}
+        <CustomCursor />
+        <ScrollProgress />
+        <TechBackground />
+
+        {/* Page content */}
+        <div className="relative z-10 w-full">
+          <Navbar />
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Education />
+          <Contact />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

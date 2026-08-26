@@ -26,10 +26,6 @@ export default {
         mono:    ['JetBrains Mono', 'monospace'],
       },
       keyframes: {
-        orbit: {
-          from: { transform: 'rotate(0deg) translateX(var(--radius, 170px)) rotate(0deg)' },
-          to:   { transform: 'rotate(360deg) translateX(var(--radius, 170px)) rotate(-360deg)' },
-        },
         'pulse-slow': {
           '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
           '50%':      { opacity: '1',   transform: 'scale(1.05)' },
@@ -46,10 +42,6 @@ export default {
           '0%':   { backgroundPosition: '-200% center' },
           '100%': { backgroundPosition:  '200% center' },
         },
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%':      { opacity: '0' },
-        },
         'gradient-shift': {
           '0%':   { backgroundPosition: '0% 50%' },
           '50%':  { backgroundPosition: '100% 50%' },
@@ -61,12 +53,10 @@ export default {
         },
       },
       animation: {
-        orbit:          'orbit 8s linear infinite',
         'pulse-slow':   'pulse-slow 6s ease-in-out infinite',
         'float-y':      'float-y 5s ease-in-out infinite',
         ticker:         'ticker 28s linear infinite',
         shimmer:        'shimmer 3s linear infinite',
-        blink:          'blink 1s step-end infinite',
         'gradient':     'gradient-shift 8s ease infinite',
         'glow-pulse':   'glow-pulse 3s ease-in-out infinite',
       },

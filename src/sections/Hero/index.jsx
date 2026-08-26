@@ -20,8 +20,10 @@ const Hero = () => {
     if (!isDeleting && typedRole === activeRole) {
       timer = setTimeout(() => setIsDeleting(true), 1800);
     } else if (isDeleting && typedRole === '') {
-      setIsDeleting(false);
-      setRoleIndex((v) => (v + 1) % ROLES.length);
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+        setRoleIndex((v) => (v + 1) % ROLES.length);
+      }, 0);
     } else {
       timer = setTimeout(() => {
         setTypedRole(isDeleting

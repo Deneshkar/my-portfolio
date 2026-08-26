@@ -1,16 +1,61 @@
-# React + Vite
+# Deneshkar Punyamoorthy - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website showcasing my projects and skills as a Software Engineering undergraduate at SLIIT.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework:** React 19 + Vite 8
+- **Styling:** Tailwind CSS 3.4
+- **Animations:** Framer Motion 12
+- **Deployment:** GitHub Pages via GitHub Actions
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Custom animated cursor
+- Loading screen with 3D animated logo
+- Canvas-based tech background (matrix rain, node graph)
+- Dark theme with violet/fuchsia accent palette
+- Responsive design
+- Contact form via Web3Forms
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+  common/           # Shared UI components (Navbar, CustomCursor, etc.)
+  sections/         # Page sections (Hero, About, Projects, etc.)
+  assets/           # Images and static files
+public/             # Static assets (favicon, resume, icons)
+```
+
+## Deployment
+
+Automated via GitHub Actions. Push to `main` branch triggers production build and deploys to GitHub Pages.
+
+## Environment Variables
+
+Create a `.env` file:
+
+```
+VITE_WEB3FORMS_KEY=your_web3forms_api_key
+```
+
+## License
+
+MIT

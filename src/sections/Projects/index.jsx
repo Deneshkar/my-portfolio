@@ -105,7 +105,7 @@ const ProjectCard = ({ project, index: cardIndex }) => (
         </span>
       </div>
 
-      <h3 className="mt-4 text-[1.25rem] font-display font-bold text-parchment leading-tight group-hover:text-gradient transition-all duration-300">
+      <h3 className="mt-4 text-[1.25rem] font-sans font-bold text-parchment leading-tight group-hover:text-gradient transition-all duration-300">
         {project.title}
       </h3>
       <p className="mt-2 text-[13px] leading-6 text-muted/65">

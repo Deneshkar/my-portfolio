@@ -43,7 +43,7 @@ const SkillCard = ({ title, icon, items, index }) => (
   >
     <div className="flex items-center gap-3 mb-4">
       <span className="text-xl">{icon}</span>
-      <h3 className="font-display text-lg font-bold text-parchment">{title}</h3>
+      <h3 className="font-sans text-lg font-bold text-parchment">{title}</h3>
     </div>
 
     <div className="flex flex-wrap gap-2">

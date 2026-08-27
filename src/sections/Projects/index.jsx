@@ -64,6 +64,18 @@ const projects = [
     demoHref: 'https://deneshkar.github.io/Monthly-Expense-Tracker/',
     icon: '💰',
   },
+  {
+    index: '06',
+    label: 'Collaboration · MERN',
+    accentFrom: '#6a9f4d',
+    accentTo: '#c89b3c',
+    title: 'MERN E-Commerce',
+    desc: 'A full-stack e-commerce platform built as a collaboration project — featuring product listings, cart management, user authentication, and a seamless checkout experience.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Redux'],
+    type: 'single',
+    repoHref: 'https://github.com/jeeviethofficial-crypto/mern-ecommerce.git',
+    icon: '🛒',
+  },
 ];
 
 const ProjectCard = ({ project, index: cardIndex }) => (

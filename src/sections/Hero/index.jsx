@@ -1,5 +1,6 @@
 import { motion as Motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+import { projects } from '../../data/projectsData.js';
 
 const ROLES = [
   'AI & ML Engineer',
@@ -289,7 +290,7 @@ const Hero = () => {
               {/* Stats row */}
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { label: 'Projects', value: '7' },
+                  { label: 'Projects', value: String(projects.length) },
                   { label: 'Domains', value: 'AI + Web' },
                   { label: 'Status', value: 'OPEN' },
                 ].map(({ label, value }) => (

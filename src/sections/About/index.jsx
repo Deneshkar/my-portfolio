@@ -1,8 +1,9 @@
 import { motion as Motion } from 'framer-motion';
 import profileImg from '../../assets/profile.jpeg';
+import { projects } from '../../data/projectsData.js';
 
 const stats = [
-  { value: '7',  label: 'Projects Built',  icon: '⚡' },
+  { value: String(projects.length),  label: 'Projects Built',  icon: '⚡' },
   { value: 'AI + Web', label: 'Core Domains',    icon: '🧠' },
   { value: '2028', label: 'Graduating',    icon: '🎓' },
 ];

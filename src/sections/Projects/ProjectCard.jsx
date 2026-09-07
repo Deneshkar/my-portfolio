@@ -1,6 +1,9 @@
 import { motion as Motion } from 'framer-motion';
 
-export const ProjectCard = ({ project, index: cardIndex }) => (
+export const ProjectCard = ({ project, index: cardIndex }) => {
+  const displayIndex = project.index || String(cardIndex + 1).padStart(2, '0');
+
+  return (
   <Motion.article
     initial={{ opacity: 0, y: 32 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -16,7 +19,7 @@ export const ProjectCard = ({ project, index: cardIndex }) => (
 
     <div className="relative p-6 pb-4">
       <span className="absolute top-4 right-5 font-display font-black text-7xl text-parchment/4 leading-none select-none">
-        {project.index}
+        {displayIndex}
       </span>
 
       <div className="flex items-center gap-3">
@@ -136,4 +139,5 @@ export const ProjectCard = ({ project, index: cardIndex }) => (
       </div>
     </div>
   </Motion.article>
-);
+  );
+};

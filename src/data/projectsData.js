@@ -22,6 +22,7 @@ export const projects = [
     tech: ['Python', 'Scikit-learn', 'XGBoost', 'SHAP', 'Streamlit', 'Pandas'],
     type: 'single',
     repoHref: 'https://github.com/Deneshkar/customer_churn_ai.git',
+    demoHref: 'https://dk-churn-predictor.streamlit.app/',
     icon: '📊',
   },
   {

@@ -1,7 +1,7 @@
 import { motion as Motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
-const ROLES = ['MERN Stack Developer', 'Frontend Engineer', 'Problem Solver', 'Full-Stack Builder'];
+const ROLES = ['MERN Stack Developer', 'Frontend Engineer', 'AI Engineer', 'Problem Solver', 'Full-Stack Builder'];
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
 
 const TECH_ICONS = ['⚛', '🟢', '🍃', '☕', '🐳', '⚡'];
@@ -71,30 +71,92 @@ const Hero = () => {
         }}
       />
 
-      {/* Orbiting decorative ring - Western style */}
-      <div className="absolute top-1/2 right-[8%] -translate-y-1/2 hidden lg:block pointer-events-none">
-        <div className="relative w-[420px] h-[420px]">
-          <div className="absolute inset-0 rounded-full border border-amber-700/10" />
-          <div className="absolute inset-[15%] rounded-full border border-red-800/8" />
-          <div className="absolute inset-[30%] rounded-full border border-orange-700/10" />
+      {/* Orbiting decorative planetary tech system - Western/Steampunk Astrolabe Style */}
+      <div className="absolute top-1/2 right-[5%] xl:right-[8%] -translate-y-1/2 hidden lg:block pointer-events-none select-none">
+        <div className="relative w-[460px] h-[460px] flex items-center justify-center">
+          {/* Ambient background glow */}
+          <div className="absolute inset-[15%] rounded-full bg-gradient-to-tr from-amber-600/10 via-amber-500/15 to-transparent blur-2xl" />
 
-          {TECH_ICONS.map((icon, i) => (
+          {/* Outer Orbit Track (Radius: 210px) */}
+          <div className="absolute w-[420px] h-[420px] rounded-full border border-dashed border-amber-500/30 shadow-[0_0_20px_rgba(200,155,60,0.12)]" />
+          
+          {/* Middle Orbit Track (Radius: 155px) */}
+          <div className="absolute w-[310px] h-[310px] rounded-full border border-amber-600/35 shadow-[0_0_15px_rgba(212,118,60,0.10)]" />
+          
+          {/* Inner Safety Boundary Ring */}
+          <div className="absolute w-[200px] h-[200px] rounded-full border border-amber-400/20" />
+
+          {/* Outer Orbit Icons (3 icons spaced evenly at 120deg on 210px radius) */}
+          {[
+            { icon: '⚛', name: 'React', color: '#38bdf8' },
+            { icon: '🍃', name: 'MongoDB', color: '#4ade80' },
+            { icon: '🐳', name: 'Docker', color: '#60a5fa' },
+          ].map((item, i) => (
             <div
-              key={i}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              key={item.name}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
               style={{
-                animation: `orbit ${8 + i * 2}s linear ${i % 2 === 0 ? '' : 'reverse'} infinite`,
-                '--radius': `${170 - i * 15}px`,
+                animation: `orbit 22s linear infinite`,
+                animationDelay: `-${(22 / 3) * i}s`,
+                '--radius': '210px',
               }}
             >
-              <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-[#1a1208]/80 border border-amber-700/20 shadow-lg shadow-amber-900/40 backdrop-blur-sm">
-                {icon}
+              <div
+                className="group relative flex items-center justify-center w-11 h-11 rounded-full bg-[#150e07] border border-amber-500/50 shadow-[0_0_15px_rgba(200,155,60,0.3)] backdrop-blur-md transition-transform hover:scale-110"
+              >
+                <span className="text-lg leading-none">{item.icon}</span>
+                <span
+                  className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] font-mono font-bold tracking-wider uppercase whitespace-nowrap opacity-75"
+                  style={{ color: item.color }}
+                >
+                  {item.name}
+                </span>
               </div>
             </div>
           ))}
 
-          <div className="absolute inset-[32%] rounded-full bg-gradient-to-br from-amber-600 to-red-700 flex items-center justify-center text-parchment font-display font-black text-3xl shadow-2xl shadow-amber-600/40 z-20 ring-4 ring-[#1a1208]/80">
-            D
+          {/* Middle Orbit Icons (3 icons spaced evenly at 120deg on 155px radius, revolving reverse) */}
+          {[
+            { icon: '🟢', name: 'Node.js', color: '#22c55e' },
+            { icon: '☕', name: 'Java', color: '#f97316' },
+            { icon: '⚡', name: 'Vite', color: '#eab308' },
+          ].map((item, i) => (
+            <div
+              key={item.name}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
+              style={{
+                animation: `orbit 16s linear reverse infinite`,
+                animationDelay: `-${(16 / 3) * i}s`,
+                '--radius': '155px',
+              }}
+            >
+              <div
+                className="group relative flex items-center justify-center w-10 h-10 rounded-full bg-[#150e07] border border-amber-600/60 shadow-[0_0_12px_rgba(212,118,60,0.35)] backdrop-blur-md transition-transform hover:scale-110"
+              >
+                <span className="text-base leading-none">{item.icon}</span>
+                <span
+                  className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] font-mono font-bold tracking-wider uppercase whitespace-nowrap opacity-75"
+                  style={{ color: item.color }}
+                >
+                  {item.name}
+                </span>
+              </div>
+            </div>
+          ))}
+
+          {/* Core Center "D" Monogram Astrolabe Badge (Diameter: 120px, radius: 60px — plenty of clearance!) */}
+          <div className="relative z-10 w-[124px] h-[124px] rounded-full p-[2px] bg-gradient-to-tr from-amber-600 via-amber-400 to-red-600 shadow-[0_0_40px_rgba(200,155,60,0.45)]">
+            <div className="w-full h-full rounded-full bg-[#120b04] border border-amber-500/30 flex flex-col items-center justify-center relative overflow-hidden">
+              {/* Subtle inner sunburst radial reflection */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(200,155,60,0.25),transparent_70%)]" />
+              
+              <span className="font-display font-black text-4xl text-gradient-warm leading-none drop-shadow-[0_2px_10px_rgba(200,155,60,0.5)]">
+                D
+              </span>
+              <span className="text-[8px] font-mono uppercase tracking-[0.25em] text-amber-400/70 mt-1">
+                DEV
+              </span>
+            </div>
           </div>
         </div>
       </div>

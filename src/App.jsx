@@ -11,14 +11,34 @@ import Projects from './sections/Projects/index.jsx';
 import Education from './sections/Education/index.jsx';
 import Contact from './sections/Contact/index.jsx';
 import Footer from './sections/Footer/index.jsx';
+import AllProjects from './pages/AllProjects.jsx';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [currentHash, setCurrentHash] = useState(() => window.location.hash);
+  const isAllProjectsPage = currentHash === '#/all-projects' || currentHash === '#all-projects';
+  const [isLoading, setIsLoading] = useState(() => !isAllProjectsPage);
 
   useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    if (isAllProjectsPage) {
+      setIsLoading(false);
+      return;
+    }
     const timer = setTimeout(() => setIsLoading(false), 4500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isAllProjectsPage]);
+
+  if (isAllProjectsPage) {
+    return <AllProjects />;
+  }
 
   return (
     <>

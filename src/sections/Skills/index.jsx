@@ -2,6 +2,11 @@ import { motion as Motion } from 'framer-motion';
 
 const skillGroups = [
   {
+    title: 'AI & Machine Learning',
+    icon: '🧠',
+    items: ['Python', 'Scikit-learn', 'XGBoost', 'SHAP (Explainable AI)', 'Pandas & NumPy', 'Streamlit', 'Data Preprocessing'],
+  },
+  {
     title: 'Frontend',
     icon: '⚛️',
     items: ['React', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS'],
@@ -19,7 +24,7 @@ const skillGroups = [
   {
     title: 'Languages',
     icon: '💻',
-    items: ['Java', 'Python', 'C', 'C++'],
+    items: ['Python', 'Java', 'JavaScript', 'C', 'C++'],
   },
   {
     title: 'Mobile',
@@ -27,9 +32,9 @@ const skillGroups = [
     items: ['Flutter', 'Dart'],
   },
   {
-    title: 'Tools',
+    title: 'Tools & DevOps',
     icon: '🛠️',
-    items: ['Git & GitHub', 'Figma', 'Postman', 'Docker', 'VS Code', 'IntelliJ IDEA'],
+    items: ['Git & GitHub', 'Docker', 'Google Colab', 'Postman', 'VS Code', 'IntelliJ IDEA'],
   },
 ];
 

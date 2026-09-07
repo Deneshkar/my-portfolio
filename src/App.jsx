@@ -30,10 +30,7 @@ function App() {
   useEffect(() => {
     if (isAllProjectsPage) {
       setIsLoading(false);
-      return;
     }
-    const timer = setTimeout(() => setIsLoading(false), 4500);
-    return () => clearTimeout(timer);
   }, [isAllProjectsPage]);
 
   if (isAllProjectsPage) {
@@ -42,25 +39,28 @@ function App() {
 
   return (
     <>
-      {isLoading && <LoadingScreen />}
-      <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#0a0806] text-[#f5e6c8]">
-        {/* Global UI elements */}
-        <CustomCursor />
-        <ScrollProgress />
-        <TechBackground />
+      {isLoading ? (
+        <LoadingScreen onComplete={() => setIsLoading(false)} />
+      ) : (
+        <div className="relative overflow-hidden w-full h-full min-h-screen bg-[#0a0806] text-[#f5e6c8]">
+          {/* Global UI elements */}
+          <CustomCursor />
+          <ScrollProgress />
+          <TechBackground />
 
-        {/* Page content */}
-        <div className="relative z-10 w-full">
-          <Navbar />
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Education />
-          <Contact />
-          <Footer />
+          {/* Page content - starts clean and fresh after loading finishes */}
+          <div className="relative z-10 w-full">
+            <Navbar />
+            <Hero />
+            <About />
+            <Projects />
+            <Skills />
+            <Education />
+            <Contact />
+            <Footer />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

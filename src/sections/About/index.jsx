@@ -2,12 +2,12 @@ import { motion as Motion } from 'framer-motion';
 import profileImg from '../../assets/profile.jpeg';
 
 const stats = [
-  { value: '5',  label: 'Projects Built',  icon: '🤠' },
-  { value: '4+', label: 'Technologies',    icon: '⚡' },
+  { value: '7',  label: 'Projects Built',  icon: '⚡' },
+  { value: 'AI + Web', label: 'Core Domains',    icon: '🧠' },
   { value: '2028', label: 'Graduating',    icon: '🎓' },
 ];
 
-const quickSkills = ['React', 'Node.js', 'Spring Boot', 'MongoDB', 'Java', 'TypeScript', 'Flutter'];
+const quickSkills = ['Python', 'Machine Learning', 'React', 'Node.js', 'Spring Boot', 'MongoDB', 'SHAP', 'Streamlit', 'Java'];
 
 const About = () => {
   return (
@@ -23,8 +23,8 @@ const About = () => {
         >
           <p className="section-label mb-3">About Me</p>
           <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-black text-parchment leading-none">
-            Crafting Digital{' '}
-            <span className="text-gradient">Experiences</span>
+            Bridging AI &{' '}
+            <span className="text-gradient">Software Engineering</span>
           </h2>
         </Motion.div>
 
@@ -79,20 +79,19 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-[16px] leading-8 text-muted/80">
-              I'm a <span className="text-gold-light font-semibold">3rd-year BSc (Hons) IT student</span> at SLIIT,
-              passionate about building full-stack web applications that combine beautiful design with
-              solid engineering. I care deeply about developer experience, code quality, and creating
-              interfaces that feel deliberate and reliable.
+              I'm a <span className="text-gold-light font-semibold">3rd-year Software Engineering student</span> at SLIIT, specializing in building intelligent systems that blend <span className="text-gold-light font-semibold">Machine Learning / AI predictive intelligence</span> with <span className="text-sunset-light font-semibold">high-performance full-stack web architectures</span>.
             </p>
 
             <p className="text-[16px] leading-8 text-muted/80">
-              Currently seeking <span className="text-sunset-light font-semibold">internship opportunities</span> for 2026
-              where I can contribute to real-world projects, learn from experienced engineers, and keep
-              leveling up the systems I build.
+              From training predictive models using XGBoost & scikit-learn with explainable AI (SHAP) to architecting scalable MERN & Spring Boot applications, I love taking data-driven insights and turning them into intuitive, production-ready interfaces.
+            </p>
+
+            <p className="text-[16px] leading-8 text-muted/80">
+              Currently seeking <span className="text-sunset-light font-semibold">internship opportunities</span> for 2026 where I can apply both my AI/ML background and software engineering foundations to impactful real-world challenges.
             </p>
 
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-3">Quick Skills</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-3">Core Expertise</p>
               <div className="flex flex-wrap gap-2">
                 {quickSkills.map((skill) => (
                   <span key={skill} className="skill-badge">{skill}</span>

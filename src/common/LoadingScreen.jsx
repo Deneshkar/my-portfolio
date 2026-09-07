@@ -1,127 +1,139 @@
-import { motion as Motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ onComplete }) => {
+  const [progress, setProgress] = useState(0);
+  const [statusText, setStatusText] = useState('Initializing Systems...');
+
+  useEffect(() => {
+    // Stage-based realistic progress calculation - smooth cinematic pacing (~3.5s)
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        // Smooth pacing increments
+        const increment = prev < 30 ? Math.floor(Math.random() * 3) + 2
+          : prev < 70 ? Math.floor(Math.random() * 4) + 2
+          : prev < 90 ? Math.floor(Math.random() * 3) + 1
+          : 1;
+        return Math.min(100, prev + increment);
+      });
+    }, 70);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (progress < 25) {
+      setStatusText('Initializing Core Architecture...');
+    } else if (progress < 55) {
+      setStatusText('Loading AI & ML Models...');
+    } else if (progress < 85) {
+      setStatusText('Rendering Design System...');
+    } else if (progress < 100) {
+      setStatusText('Preparing Experience...');
+    } else {
+      setStatusText('System Ready');
+      const timer = setTimeout(() => {
+        if (onComplete) onComplete();
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+  }, [progress, onComplete]);
+
   return (
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#0a0806] overflow-hidden">
-      {/* Warm ambient glow */}
+    <Motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: 1.02, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0a0806] text-[#f5e6c8] overflow-hidden select-none"
+    >
+      {/* Background radial glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[500px] h-[500px] rounded-full bg-amber-800/8 blur-[120px]" />
+        <div className="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(200,155,60,0.14)_0%,rgba(139,37,0,0.06)_45%,transparent_70%)] blur-2xl" />
       </div>
 
-      {/* Vignette */}
+      {/* Western grid overlay */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(10,8,6,0.85) 100%)' }}
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(200,155,60,0.6) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(200,155,60,0.6) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
       />
 
-      {/* Main content */}
-      <Motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-        className="relative flex flex-col items-center"
-      >
-        {/* Top ornamental line */}
+      <div className="relative z-10 flex flex-col items-center max-w-sm px-6 text-center">
+        {/* Animated Central Emblem */}
         <Motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="w-48 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent mb-6"
-        />
-
-        {/* Top ornament diamond */}
-        <Motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mb-4"
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mb-8"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L18 12L12 22L6 12L12 2Z" stroke="#c89b3c" strokeWidth="1" opacity="0.6" />
-            <circle cx="12" cy="12" r="2" fill="#c89b3c" opacity="0.4" />
-          </svg>
+          {/* Rotating outer ring */}
+          <div className="w-24 h-24 rounded-full border border-dashed border-amber-500/40 animate-rotate-slow flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full border border-amber-600/30" />
+          </div>
+
+          {/* Central Monogram */}
+          <div className="absolute inset-0 m-auto w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-[#c89b3c] via-[#b33a00] to-[#8b2500] shadow-[0_0_30px_rgba(200,155,60,0.45)]">
+            <div className="w-full h-full rounded-full bg-[#120b04] flex items-center justify-center">
+              <span className="font-display font-black text-2xl text-gradient-warm leading-none">
+                D
+              </span>
+            </div>
+          </div>
         </Motion.div>
 
-        {/* Main title */}
+        {/* Brand Name */}
         <Motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-2"
         >
-          <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-black text-parchment tracking-[0.15em] leading-none">
+          <h1 className="font-display text-2xl sm:text-3xl font-black tracking-[0.25em] text-parchment leading-none">
             DENESHKAR
           </h1>
         </Motion.div>
 
-        {/* Ornamental divider */}
-        <Motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex items-center gap-3 my-4"
-        >
-          <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/40" />
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 0L10 6L16 8L10 10L8 16L6 10L0 8L6 6L8 0Z" fill="#c89b3c" opacity="0.5" />
-          </svg>
-          <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/40" />
-        </Motion.div>
-
-        {/* Subtitle */}
-        <Motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="text-center"
-        >
-          <p className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold/60">
-            Software Engineer & Developer
-          </p>
-        </Motion.div>
-
-        {/* Bottom ornamental line */}
-        <Motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="w-48 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent mt-6"
-        />
-
-        {/* Loading indicator */}
-        <Motion.div
+        {/* Subtitle / Role */}
+        <Motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-          className="mt-10 flex flex-col items-center gap-3"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-mono text-[10px] uppercase tracking-[0.35em] text-amber-400/80 mb-8"
         >
-          {/* Animated dots */}
-          <div className="flex gap-2">
-            {[0, 1, 2].map((i) => (
-              <Motion.div
-                key={i}
-                animate={{ opacity: [0.2, 1, 0.2] }}
-                transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2 }}
-                className="w-1.5 h-1.5 rounded-full bg-gold/60"
-              />
-            ))}
+          AI & Software Engineer
+        </Motion.p>
+
+        {/* Progress Bar Container */}
+        <div className="w-64 sm:w-72">
+          {/* Top progress metrics */}
+          <div className="flex justify-between items-center text-[10px] font-mono text-muted/70 mb-2">
+            <span className="tracking-wider uppercase">{statusText}</span>
+            <span className="text-amber-400 font-bold">{progress}%</span>
           </div>
 
-          <p className="font-mono text-[9px] uppercase tracking-[0.6em] text-gold/30">
-            Loading
-          </p>
-        </Motion.div>
-      </Motion.div>
+          {/* Bar track */}
+          <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-amber-950/40 border border-amber-700/25 p-[1px]">
+            <Motion.div
+              className="h-full rounded-full bg-gradient-to-r from-gold via-sunset to-rust shadow-[0_0_12px_rgba(200,155,60,0.8)] transition-all duration-100 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
 
-      {/* Reveal overlay - splits open from center */}
-      <Motion.div
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        transition={{ duration: 1.0, delay: 1.8, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute inset-0 bg-[#0a0806] origin-top"
-        style={{ transformOrigin: 'top' }}
-      />
-    </div>
+        {/* Bottom micro quote */}
+        <p className="mt-8 font-mono text-[9px] uppercase tracking-[0.3em] text-muted/40">
+          Crafting Intelligent Experiences
+        </p>
+      </div>
+    </Motion.div>
   );
 };
 

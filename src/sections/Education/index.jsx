@@ -2,8 +2,8 @@ import { motion as Motion } from 'framer-motion';
 
 const milestones = [
   { year: '2024', event: 'Joined SLIIT', desc: 'Started BSc (Hons) Software Engineering program.' },
-  { year: '2025', event: 'Built MERN Projects', desc: 'Developed Food Order App and Rice Mill Management System.' },
-  { year: '2026', event: 'Seeking Internship', desc: 'Open to real-world opportunities to grow and contribute.' },
+  { year: '2025', event: 'Full-Stack & AI Systems', desc: 'Engineered MERN platforms and end-to-end Machine Learning pipelines with SHAP explainability.' },
+  { year: '2026', event: 'Seeking Internship', desc: 'Open to real-world AI & Software Engineering opportunities.' },
   { year: '2028', event: 'Graduation Target', desc: 'Expected completion of honours degree.' },
 ];
 

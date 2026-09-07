@@ -1,10 +1,14 @@
 import { motion as Motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
-const ROLES = ['MERN Stack Developer', 'Frontend Engineer', 'AI Engineer', 'Problem Solver', 'Full-Stack Builder'];
+const ROLES = [
+  'AI & ML Engineer',
+  'Full-Stack Developer',
+  'MERN Stack Specialist',
+  'Data Science Enthusiast',
+  'Problem Solver'
+];
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
-
-const TECH_ICONS = ['⚛', '🟢', '🍃', '☕', '🐳', '⚡'];
 
 const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -86,18 +90,19 @@ const Hero = () => {
           {/* Inner Safety Boundary Ring */}
           <div className="absolute w-[200px] h-[200px] rounded-full border border-amber-400/20" />
 
-          {/* Outer Orbit Icons (3 icons spaced evenly at 120deg on 210px radius) */}
+          {/* Outer Orbit Icons (4 icons evenly spaced on 210px radius) */}
           {[
+            { icon: '🧠', name: 'AI / ML', color: '#a78bfa' },
             { icon: '⚛', name: 'React', color: '#38bdf8' },
+            { icon: '🐍', name: 'Python', color: '#facc15' },
             { icon: '🍃', name: 'MongoDB', color: '#4ade80' },
-            { icon: '🐳', name: 'Docker', color: '#60a5fa' },
           ].map((item, i) => (
             <div
               key={item.name}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
               style={{
-                animation: `orbit 22s linear infinite`,
-                animationDelay: `-${(22 / 3) * i}s`,
+                animation: `orbit 24s linear infinite`,
+                animationDelay: `-${(24 / 4) * i}s`,
                 '--radius': '210px',
               }}
             >
@@ -115,11 +120,11 @@ const Hero = () => {
             </div>
           ))}
 
-          {/* Middle Orbit Icons (3 icons spaced evenly at 120deg on 155px radius, revolving reverse) */}
+          {/* Middle Orbit Icons (3 icons evenly spaced on 155px radius, revolving reverse) */}
           {[
+            { icon: '📊', name: 'Data / SHAP', color: '#60a5fa' },
             { icon: '🟢', name: 'Node.js', color: '#22c55e' },
             { icon: '☕', name: 'Java', color: '#f97316' },
-            { icon: '⚡', name: 'Vite', color: '#eab308' },
           ].map((item, i) => (
             <div
               key={item.name}
@@ -144,17 +149,16 @@ const Hero = () => {
             </div>
           ))}
 
-          {/* Core Center "D" Monogram Astrolabe Badge (Diameter: 120px, radius: 60px — plenty of clearance!) */}
+          {/* Core Center "D" Monogram Astrolabe Badge */}
           <div className="relative z-10 w-[124px] h-[124px] rounded-full p-[2px] bg-gradient-to-tr from-amber-600 via-amber-400 to-red-600 shadow-[0_0_40px_rgba(200,155,60,0.45)]">
             <div className="w-full h-full rounded-full bg-[#120b04] border border-amber-500/30 flex flex-col items-center justify-center relative overflow-hidden">
-              {/* Subtle inner sunburst radial reflection */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(200,155,60,0.25),transparent_70%)]" />
               
               <span className="font-display font-black text-4xl text-gradient-warm leading-none drop-shadow-[0_2px_10px_rgba(200,155,60,0.5)]">
                 D
               </span>
               <span className="text-[8px] font-mono uppercase tracking-[0.25em] text-amber-400/70 mt-1">
-                DEV
+                AI · DEV
               </span>
             </div>
           </div>
@@ -205,9 +209,7 @@ const Hero = () => {
             variants={fadeUp}
             className="mt-7 max-w-xl text-[15px] leading-8 text-muted/80"
           >
-            I craft <span className="text-gold-light font-semibold">clean, performant</span> web experiences
-            with React, Node.js, MongoDB, and Spring Boot. Passionate about turning ideas into polished,
-            reliable applications that <span className="text-sunset-light font-semibold">feel great</span> to use.
+            Building intelligent full-stack systems — bridging <span className="text-gold-light font-semibold">Machine Learning & AI pipelines</span> (Python, XGBoost, SHAP) with <span className="text-sunset-light font-semibold">robust modern web architectures</span> (React, Node.js, MongoDB, Spring Boot).
           </Motion.p>
 
           <Motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-4">
@@ -271,13 +273,13 @@ const Hero = () => {
                 </div>
                 <div>
                   <p className="font-display text-sm font-bold text-parchment">Deneshkar</p>
-                  <p className="font-mono text-[10px] text-muted/60 uppercase tracking-wider">Software Engineer</p>
+                  <p className="font-mono text-[10px] text-muted/60 uppercase tracking-wider">AI & Software Engineer</p>
                 </div>
               </div>
 
               {/* Tech stack badges */}
               <div className="flex flex-wrap gap-1.5 mb-5">
-                {['React', 'Node.js', 'MongoDB', 'Spring Boot'].map((tech) => (
+                {['Python', 'Scikit-learn', 'React', 'Node.js', 'Spring Boot'].map((tech) => (
                   <span key={tech} className="px-2.5 py-1 rounded-md bg-amber-700/10 border border-amber-700/15 font-mono text-[9px] font-semibold text-gold-light uppercase tracking-wider">
                     {tech}
                   </span>
@@ -287,8 +289,8 @@ const Hero = () => {
               {/* Stats row */}
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { label: 'Projects', value: '5+' },
-                  { label: 'Stack', value: 'MERN' },
+                  { label: 'Projects', value: '7' },
+                  { label: 'Domains', value: 'AI + Web' },
                   { label: 'Status', value: 'OPEN' },
                 ].map(({ label, value }) => (
                   <div key={label} className="text-center">
